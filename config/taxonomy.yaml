@@ -1,0 +1,83 @@
+# Label taxonomy for ticket triage. This is CONFIG, not code.
+#
+# The harness scores against whatever taxonomy it is handed; this file is the
+# shipped DEFAULT. Point the harness at your own taxonomy.yaml to reuse the whole
+# pipeline on your own tickets — "Oracle's P1 isn't Stripe's P1."
+#
+# Governing principle: `urgency` encodes OPERATIONAL IMPACT ONLY — decoupled from
+# customer tone and from account tier. Tone is noise the model must see through;
+# tier is a separate ticket field, used for routing downstream, never for the label.
+
+version: 1
+
+category:
+  # Exactly one PRIMARY label per ticket. Assign by the subsystem that owns the
+  # FIX, not the symptom the customer describes.
+  other_cap: 0.10   # If >10% of tickets land in `other`, the taxonomy is wrong, not the tickets.
+  labels:
+    - id: billing
+      description: >
+        Charges, invoices, payment methods, refunds, plan pricing. The fix lives
+        with the billing / payments system.
+    - id: technical
+      description: >
+        The product is malfunctioning — errors, outages, bugs, performance,
+        integration / API failures. The fix is a code or infrastructure change.
+    - id: account
+      description: >
+        Access, authentication, roles / permissions, org and user management,
+        subscription state changes (not the charge itself). The fix is an
+        account-state change.
+    - id: feature_request
+      description: >
+        Nothing is currently broken; the customer wants new or changed behavior.
+        Catches requests dressed as bug reports (see decision_rules).
+    - id: other
+      description: >
+        Genuinely doesn't fit the above — general questions, feedback, spam.
+  decision_rules:
+    - "Owner-of-fix, not symptom: pick the subsystem whose change resolves the ticket."
+    - "feature_request beats a bug framing: if nothing that exists is broken and the
+       customer wants behavior that doesn't exist yet, it is feature_request even when
+       phrased as 'X is broken'."
+    - "If two subsystems apply, pick the one that drives the action the customer most
+       needs right now (the same tie-break used for urgency)."
+
+urgency:
+  # Operational impact only. ORDINAL: P0 worst -> P3 least. A P0 predicted as P3 is
+  # far worse than a P1 as P2; the eval weights that (Phase 3).
+  #
+  # 4 levels is the STARTING design. If intra-annotator kappa at the P1/P2 boundary is
+  # poor, collapse to 3 by deleting P2 and folding its guidance into P1 — a change
+  # HERE, reported honestly in the README. That collapse is the point, not a failure.
+  decoupling:
+    tone: >
+      Ignore customer emotion. A furious customer with a typo complaint is not P0;
+      a calm customer whose production is down is P0.
+    tier: >
+      Ignore account tier. Urgency is impact, not who is affected. Tier is a separate
+      ticket field and may drive routing priority downstream — never the label.
+  multi_issue: >
+    Score urgency by the HIGHEST-impact issue present in the ticket.
+  levels:
+    - id: P0
+      name: Critical
+      anchor: >
+        Production down, data loss or corruption, security / privacy breach, or a
+        complete block on a core workflow with NO workaround. Broad or business-
+        critical scope.
+    - id: P1
+      name: High
+      anchor: >
+        A core function is broken or severely degraded; a workaround may exist but is
+        painful; OR there is a hard external deadline / SLA. Not a full outage.
+    - id: P2
+      name: Normal
+      anchor: >
+        Partial or minor breakage with a clear workaround; not time-critical. The
+        product remains usable.
+    - id: P3
+      name: Low
+      anchor: >
+        Cosmetic issues, general questions, or requests with no functional impact.
+        Most feature_requests are P3 unless they block a committed deadline.
