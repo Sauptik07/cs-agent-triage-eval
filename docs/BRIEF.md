@@ -54,6 +54,16 @@ The story I want to be able to tell:
 - Plain JSON/CSV for data. No database. No vector DB.
 - `pytest` for harness tests.
 - CLI only. **No web UI, no Streamlit, no dashboard.**
+- **Reproducibility & determinism (fixed at schema level).** `temperature=0` for every eval call.
+  Every run record persists the *full config that produced it*: prompt hash, full prompt text, model,
+  provider, temperature, timestamp, and git SHA — so any run is reconstructable and comparable.
+  Because temp=0 is not truly deterministic, establish a **noise floor**: run the same config 3× and
+  report the variance, so we know what size delta is real vs. run-to-run jitter.
+
+## Scope & rigor
+Phases 1–5 are the **defensible core** (hard taxonomy → honest eval → error analysis → one measured
+improvement). Phases 6–7 are **stretch**. Eval rigor is never sacrificed to reach the memory demo —
+a rigorous 1–5 beats a rushed 1–7.
 
 ---
 
@@ -82,15 +92,31 @@ First, design with me:
 - A **Jira-shaped ticket schema** (ticket_id, account, reporter, component, summary, description,
   created_at, etc.) so this is genuinely reusable when I open-source it.
 
-Then generate ~60 tickets across ~6 fictional accounts of different tiers.
+Then generate **150 tickets** across ~6 fictional accounts of different tiers.
 
 **Critical — avoid label leakage.** If you generate tickets *knowing* the target label, you'll write
 "P0" tickets in P0-flavored language, and any classifier will ace a test real tickets would fail.
 So: generate without conditioning on the label, and deliberately include mislabel-bait — furious
 customer with a trivial issue, calm customer whose production is down, multi-issue tickets, one-line
-tickets, tickets that are actually feature requests dressed as bugs.
+tickets, tickets that are actually feature requests dressed as bugs. (Note: mislabel-bait makes the
+distribution deliberately hard, so the headline accuracy is *pessimistic* vs. a real ticket stream —
+say so in the README.)
 
-**Do not label them.** I label all 60 by hand. Then split: 10 dev / 50 held-out test.
+**Cross-model generation as a leakage mitigation.** Generate the tickets with **Gemini (paid)** and
+classify later with **DeepSeek** — different model families on purpose, so the classifier isn't
+scoring its own stylistic tics. README states this is a *mitigation, not a fix*: it reduces
+same-model style leakage but does not eliminate all spurious correlations.
+
+**Do not label them.** I label all 150 by hand. Then split: **30 dev / 120 held-out test.**
+
+**Annotator agreement (the taxonomy's honesty check).** One labeler (me) means I can't measure true
+inter-annotator agreement, so I approximate it two ways:
+- **(a) Intra-annotator κ.** In a *later* session I re-label a shuffled, blinded 20-ticket subset,
+  then compute Cohen's κ against my originals. If I disagree with *myself*, the taxonomy is too fine.
+- **(b) LLM disagreement detector.** A script runs an LLM over my labels purely to **flag** tickets
+  where it differs — it **never produces a label I accept**; it only surfaces tickets for me to
+  re-review and re-decide myself.
+- README states honestly that **self-agreement is an upper bound** on true inter-annotator agreement.
 
 **Before I start, explain why the model that generates the eval data must not label it, and why
 I must not look at the test set while iterating on prompts.** I want to say this cleanly in an interview.
@@ -102,7 +128,7 @@ beats "please respond in JSON," and what to do when the model returns malformed 
 Don't optimize. v1 is the baseline and it's supposed to be mediocre.
 
 ### Phase 3 — The eval harness (the core deliverable)
-A runner that executes the agent across the 50-ticket test set and scores it. Before coding, walk
+A runner that executes the agent across the 120-ticket test set and scores it. Before coding, walk
 me through the metric choices:
 - Why raw accuracy misleads on imbalanced classes
 - Per-class precision / recall / F1 — what each actually tells me
@@ -110,11 +136,21 @@ me through the metric choices:
 - Urgency is **ordinal**: P0 predicted as P3 is far worse than P1 as P2. How do we capture that?
 - Track **cost and latency per ticket**. FDE work is judged on these.
 
-Include a **naive baseline** (always predict majority class). If the agent can't beat it, the agent
-is worthless — that number goes in the README.
+**Significance, not point estimates.** With 120 tickets a few-ticket swing is noise. So:
+- Report **bootstrap confidence intervals** on accuracy, not a bare number.
+- For any two-version comparison (v1 vs v2, later) use **McNemar's test** on the same tickets —
+  paired, because both versions see identical inputs.
+- Report the **3× noise floor** (same config run three times) so I know the jitter band.
 
-Persist `results/run-<timestamp>.json` so runs are comparable. This is what makes every later
-change an experiment instead of a guess.
+Include **two baselines**: (1) **majority-class** (always predict the most common label) and
+(2) a **keyword/regex classifier**. If the agent can't beat majority-class it's worthless; the
+honest framing for the README is "the LLM beats regex by N points at ~100× the cost." Both numbers
+go in the README.
+
+Persist `results/run-<timestamp>.json` so runs are comparable. **Each run record stores the full
+config that produced it** — prompt hash, full prompt text, model, provider, temperature, timestamp,
+git SHA, plus per-ticket predictions (so McNemar can pair runs after the fact). This is what makes
+every later change an experiment instead of a guess.
 
 **Then: run the same eval across 2–3 providers/models and produce a cost-vs-quality table.**
 
@@ -127,17 +163,19 @@ Failure taxonomy goes in `LEARNING_LOG.md`. This is the heart of the blog post.
 
 ### Phase 5 — Agent v2 (one variable at a time)
 Changes driven *only* by the error analysis, ranked by expected impact. Change **one thing**, re-run
-the eval, record the delta. Three changes at once teaches me nothing.
+the eval, record the delta. Three changes at once teaches me nothing. **Every v1→v2 delta is
+reported with McNemar's test on the same tickets** — a "win" that isn't significant is not a win.
 
 Levers to discuss: prompt specificity, few-shot from the dev set, tool-schema field descriptions,
 reasoning-before-answering, model routing (cheap model for easy tickets, expensive for ambiguous ones).
 
-### Phase 6 — Stage the pipeline
-Split the single classify call into explicit stages: **categorize → assess/score → recommend next action.**
-Re-run the eval after each split. Does decomposition actually help, or just add cost and latency?
-I want the real answer, including if it's "no."
+### Phase 6 — Stage the pipeline (stretch)
+Split the single classify call into two explicit stages: **categorize → assess/score.**
+("Recommend next action" is dropped — there's no ground-truth label for it, so it isn't scorable.)
+Re-run the eval after the split. The only question: does decomposing categorize→assess into separate
+calls **improve accuracy, and at what cost/latency**? I want the real answer, including if it's "no."
 
-### Phase 7 — Account memory (as a *measured experiment*)
+### Phase 7 — Account memory (as a *measured experiment*) (stretch)
 Now, and not before, add a per-account context layer.
 
 Start **flat, not graph**: an "account card" per account — tier, known issues, recurring themes, past
@@ -146,8 +184,10 @@ knowledge graph.
 
 Then measure honestly:
 - Accuracy delta vs Phase 6
-- **Cost and latency delta** — memory adds context tokens; it does not save money. Push back if I
-  claim otherwise.
+- **Cost and latency delta** — the correct framing is "**memory adds tokens; caching amortizes them
+  across a session.**" Memory never *saves* tokens; prompt caching only spreads the added
+  account-card tokens across repeated calls in a session. Push back if I claim memory saves money —
+  but don't conflate that with what caching does (see the cost-levers note below).
 - Where memory *hurt*: did stale account context cause the agent to anchor on a past issue and
   misread a new one? Find at least one case. This is the most interesting finding in the project.
 
