@@ -1,0 +1,285 @@
+{
+  "generated_at": "2026-07-13T00:42:02.615697+00:00",
+  "git_sha": "35a9af02f165ce1e76e545db23d62353261abe3d",
+  "model": "gemini-flash-latest",
+  "model_version_resolved": [
+    "gemini-3.5-flash"
+  ],
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+  "temperature": 0.9,
+  "seed": 42,
+  "counts": {
+    "total": 150,
+    "ordinary": 120,
+    "bait": 30,
+    "bait_per_archetype": 6
+  },
+  "prompts": {
+    "preamble": "You write realistic inbound customer-support tickets for a fictional B2B SaaS company called Meridian \u2014 a platform offering: single sign-on (SSO) and user/role management; subscription billing; a REST API with webhooks; a web dashboard with reports and CSV/PDF data export; and prebuilt integrations (Slack, Salesforce, Zapier). You are simulating what real customers write to support. Output ONLY the ticket, in the customer's own words.",
+    "output_rules": "STRICT RULES \u2014 these keep the dataset scientifically valid:\n- Never classify, rate, tag, prioritize, or categorize the ticket. Do not output any field or phrase like 'Priority: ...', 'Severity: ...', 'P0/P1/P2/P3', or 'Category: ...'.\n- Write only what a customer would type: a subject line and a body. Nothing else.\n- Real people vary: some terse, some rambling, some polite, some frustrated. Use everyday language, not corporate template speak.\nReturn ONLY a JSON array of exactly {n} objects, no prose around it. Each object:\n{{\"reporter_name\": \"<a person's name>\", \"channel\": \"email\" | \"chat\" | \"portal\", \"summary\": \"<one-line subject>\", \"description\": \"<the full ticket body>\"}}",
+    "ordinary": "These are ORDINARY, realistic support tickets \u2014 the everyday base rate. Tone should NATURALLY MATCH the severity of the problem: a mildly annoyed customer with a minor inconvenience; a worried or stressed customer with a real, serious problem; a neutral, matter-of-fact customer with a routine question or request. Do NOT force any mismatch between tone and severity \u2014 that correlation is what makes this the realistic base rate. Span the product's areas across the batch: login/SSO, users and roles, invoices/refunds/plan changes, API and webhook errors, dashboard and reports, CSV/PDF export, and third-party integrations \u2014 plus a few general questions or bits of feedback. Vary length (some one or two lines, some a few paragraphs) and specificity (some vague, some precise).",
+    "bait": {
+      "angry-trivial": "Generate tickets from this SPECIFIC hard case: a FURIOUS, aggressive customer \u2014 heavy caps, exclamation marks, threats to cancel \u2014 whose ACTUAL underlying problem is tiny or purely cosmetic: a typo on a page, a slightly misaligned button, a color they dislike, a minor wording nitpick. The emotional intensity should be wildly out of proportion to how small the real issue is. Vary the trivial issue and the flavor of anger across the batch.",
+      "calm-severe": "Generate tickets from this SPECIFIC hard case: a CALM, polite, understated, matter-of-fact customer who mentions \u2014 almost in passing, without alarm \u2014 something actually severe: their production login has been down for hours, the API is returning errors for all their users, a chunk of their data has vanished or looks corrupted, or they noticed what might be a security exposure. The mild, unbothered tone should badly understate how serious it is. Vary the severe issue and the understated framing across the batch.",
+      "multi-issue": "Generate tickets from this SPECIFIC hard case: a customer raising TWO genuinely unrelated problems in a single message \u2014 e.g. a billing/invoice question AND a login or API failure, or a feature question AND a data-export bug. Both problems should be real and non-trivial; neither is a throwaway aside. Vary the two problems across the batch.",
+      "feature-as-bug": "Generate tickets from this SPECIFIC hard case: a customer who angrily demands that something be 'fixed' as though it is broken, when the capability they want never existed as a feature. For example: 'Your CSV export is BROKEN \u2014 it won't export to PDF' (PDF export was never offered), or 'the API is broken, it has no endpoint for X' (X was never built). Write it as an indignant bug report about missing functionality. Vary the nonexistent feature.",
+      "terse": "Generate tickets from this SPECIFIC hard case: extremely TERSE, low-information one-liners that are genuinely hard to triage because there is almost nothing to go on \u2014 e.g. 'doesn't work', 'help', 'still broken??', 'login?', 'refund'. A word or a short fragment, no detail, no context. Vary them across the batch."
+    }
+  },
+  "prompt_sha256": {
+    "preamble": "4a84cda444d666537110e9d4e52d2007a5db9ca8a5c7fe28c4879a3957d319fd",
+    "output_rules": "654804df34197d4f3cfdffa33dd1ec535909a6df0a91e49ab7665b78e5df1691",
+    "ordinary": "0c6e31d58566a783ecdd7c778acd847a8b1e11bdcb19c0b3e7ad62643c83e925",
+    "bait": "8e7a77e0c21a7ba0618bd5e91662663aa60318a5f210b2148b3d90da441f4d50"
+  },
+  "ticket_provenance": {
+    "TKT-001": "ordinary",
+    "TKT-002": "multi-issue",
+    "TKT-003": "ordinary",
+    "TKT-004": "multi-issue",
+    "TKT-005": "ordinary",
+    "TKT-006": "ordinary",
+    "TKT-007": "calm-severe",
+    "TKT-008": "ordinary",
+    "TKT-009": "ordinary",
+    "TKT-010": "ordinary",
+    "TKT-011": "ordinary",
+    "TKT-012": "ordinary",
+    "TKT-013": "ordinary",
+    "TKT-014": "feature-as-bug",
+    "TKT-015": "ordinary",
+    "TKT-016": "ordinary",
+    "TKT-017": "calm-severe",
+    "TKT-018": "ordinary",
+    "TKT-019": "ordinary",
+    "TKT-020": "ordinary",
+    "TKT-021": "ordinary",
+    "TKT-022": "multi-issue",
+    "TKT-023": "ordinary",
+    "TKT-024": "angry-trivial",
+    "TKT-025": "calm-severe",
+    "TKT-026": "multi-issue",
+    "TKT-027": "ordinary",
+    "TKT-028": "ordinary",
+    "TKT-029": "calm-severe",
+    "TKT-030": "ordinary",
+    "TKT-031": "ordinary",
+    "TKT-032": "ordinary",
+    "TKT-033": "ordinary",
+    "TKT-034": "terse",
+    "TKT-035": "multi-issue",
+    "TKT-036": "ordinary",
+    "TKT-037": "ordinary",
+    "TKT-038": "ordinary",
+    "TKT-039": "ordinary",
+    "TKT-040": "ordinary",
+    "TKT-041": "ordinary",
+    "TKT-042": "ordinary",
+    "TKT-043": "ordinary",
+    "TKT-044": "ordinary",
+    "TKT-045": "ordinary",
+    "TKT-046": "ordinary",
+    "TKT-047": "ordinary",
+    "TKT-048": "terse",
+    "TKT-049": "ordinary",
+    "TKT-050": "ordinary",
+    "TKT-051": "angry-trivial",
+    "TKT-052": "ordinary",
+    "TKT-053": "ordinary",
+    "TKT-054": "ordinary",
+    "TKT-055": "ordinary",
+    "TKT-056": "ordinary",
+    "TKT-057": "ordinary",
+    "TKT-058": "ordinary",
+    "TKT-059": "ordinary",
+    "TKT-060": "ordinary",
+    "TKT-061": "ordinary",
+    "TKT-062": "ordinary",
+    "TKT-063": "ordinary",
+    "TKT-064": "feature-as-bug",
+    "TKT-065": "ordinary",
+    "TKT-066": "terse",
+    "TKT-067": "ordinary",
+    "TKT-068": "ordinary",
+    "TKT-069": "multi-issue",
+    "TKT-070": "ordinary",
+    "TKT-071": "ordinary",
+    "TKT-072": "ordinary",
+    "TKT-073": "ordinary",
+    "TKT-074": "ordinary",
+    "TKT-075": "ordinary",
+    "TKT-076": "feature-as-bug",
+    "TKT-077": "ordinary",
+    "TKT-078": "ordinary",
+    "TKT-079": "angry-trivial",
+    "TKT-080": "ordinary",
+    "TKT-081": "ordinary",
+    "TKT-082": "angry-trivial",
+    "TKT-083": "ordinary",
+    "TKT-084": "ordinary",
+    "TKT-085": "ordinary",
+    "TKT-086": "ordinary",
+    "TKT-087": "ordinary",
+    "TKT-088": "ordinary",
+    "TKT-089": "ordinary",
+    "TKT-090": "ordinary",
+    "TKT-091": "feature-as-bug",
+    "TKT-092": "ordinary",
+    "TKT-093": "ordinary",
+    "TKT-094": "ordinary",
+    "TKT-095": "ordinary",
+    "TKT-096": "ordinary",
+    "TKT-097": "ordinary",
+    "TKT-098": "ordinary",
+    "TKT-099": "terse",
+    "TKT-100": "ordinary",
+    "TKT-101": "ordinary",
+    "TKT-102": "ordinary",
+    "TKT-103": "ordinary",
+    "TKT-104": "ordinary",
+    "TKT-105": "ordinary",
+    "TKT-106": "ordinary",
+    "TKT-107": "angry-trivial",
+    "TKT-108": "ordinary",
+    "TKT-109": "ordinary",
+    "TKT-110": "ordinary",
+    "TKT-111": "feature-as-bug",
+    "TKT-112": "ordinary",
+    "TKT-113": "ordinary",
+    "TKT-114": "ordinary",
+    "TKT-115": "ordinary",
+    "TKT-116": "ordinary",
+    "TKT-117": "angry-trivial",
+    "TKT-118": "calm-severe",
+    "TKT-119": "ordinary",
+    "TKT-120": "ordinary",
+    "TKT-121": "terse",
+    "TKT-122": "ordinary",
+    "TKT-123": "ordinary",
+    "TKT-124": "ordinary",
+    "TKT-125": "ordinary",
+    "TKT-126": "ordinary",
+    "TKT-127": "ordinary",
+    "TKT-128": "ordinary",
+    "TKT-129": "ordinary",
+    "TKT-130": "ordinary",
+    "TKT-131": "ordinary",
+    "TKT-132": "ordinary",
+    "TKT-133": "ordinary",
+    "TKT-134": "terse",
+    "TKT-135": "calm-severe",
+    "TKT-136": "ordinary",
+    "TKT-137": "ordinary",
+    "TKT-138": "ordinary",
+    "TKT-139": "ordinary",
+    "TKT-140": "ordinary",
+    "TKT-141": "ordinary",
+    "TKT-142": "ordinary",
+    "TKT-143": "feature-as-bug",
+    "TKT-144": "ordinary",
+    "TKT-145": "ordinary",
+    "TKT-146": "ordinary",
+    "TKT-147": "ordinary",
+    "TKT-148": "ordinary",
+    "TKT-149": "ordinary",
+    "TKT-150": "ordinary"
+  },
+  "prose_leakage_scan": {
+    "label_tokens": {
+      "feature_request": {
+        "count": 0,
+        "tickets": []
+      },
+      "\\bP[0-3]\\b": {
+        "count": 0,
+        "tickets": []
+      },
+      "category:": {
+        "count": 0,
+        "tickets": []
+      },
+      "priority:": {
+        "count": 0,
+        "tickets": []
+      },
+      "severity:": {
+        "count": 0,
+        "tickets": []
+      }
+    },
+    "meta_words": {
+      "urgent": {
+        "count": 7,
+        "tickets": [
+          "TKT-013",
+          "TKT-014",
+          "TKT-022",
+          "TKT-039",
+          "TKT-063",
+          "TKT-095",
+          "TKT-102"
+        ]
+      },
+      "critical": {
+        "count": 6,
+        "tickets": [
+          "TKT-022",
+          "TKT-064",
+          "TKT-069",
+          "TKT-076",
+          "TKT-079",
+          "TKT-108"
+        ]
+      },
+      "severity": {
+        "count": 0,
+        "tickets": []
+      },
+      "priority": {
+        "count": 0,
+        "tickets": []
+      },
+      "blocker": {
+        "count": 0,
+        "tickets": []
+      }
+    },
+    "noisy_words": {
+      "billing": 34,
+      "technical": 0,
+      "account": 30,
+      "other": 3,
+      "high": 5,
+      "normal": 0,
+      "low": 0
+    }
+  },
+  "near_duplicates": [
+    {
+      "a": "TKT-009",
+      "b": "TKT-112",
+      "jaccard": 0.632
+    },
+    {
+      "a": "TKT-019",
+      "b": "TKT-140",
+      "jaccard": 0.617
+    }
+  ],
+  "post_generation_review": {
+    "known_confounds": [
+      {
+        "id": "sso-urgency-correlation",
+        "description": "~5 ordinary tickets are SSO/SAML lockouts (TKT-013, TKT-039, TKT-095, TKT-102, TKT-108) that cluster with high operational impact; the generator leaned on this common, severe pattern. Kept as-is: reshaping the input distribution from a property only visible by inspecting the eval data would itself be a form of test-set peeking, and real support queues genuinely cluster on correlated incidents.",
+        "risk": "A classifier could learn the shortcut 'SSO -> high urgency' and score well for the wrong reason (keying on subsystem rather than operational impact).",
+        "action": "Phase 4 error analysis: check the confusion matrix for whether the model keys on the SSO subsystem rather than impact. Note in README limitations."
+      }
+    ],
+    "anti_leakage_evidence": {
+      "pair": ["TKT-079", "TKT-108"],
+      "shared_word": "critical",
+      "note": "Both contain the venting word 'critical' but with OPPOSITE true severity: TKT-079 is a furious all-caps complaint about a documentation typo (trivial), TKT-108 is an SSO outage for all users (severe). Same word, opposite impact -> the generator did not calibrate urgency words to real severity. Canonical evidence the tone/severity decoupling held; goes in the README."
+    }
+  },
+  "note": "One-time artifact; tickets.json is canonical. Label from tickets.json ONLY \u2014 do not consult ticket_provenance while labeling (it would bias urgency)."
+}

@@ -1,0 +1,8 @@
+[
+  {"account_id": "ACC-1", "name": "Northwind Logistics", "tier": "enterprise", "domain": "northwind-logistics.com"},
+  {"account_id": "ACC-2", "name": "Beacon Health", "tier": "enterprise", "domain": "beaconhealth.io"},
+  {"account_id": "ACC-3", "name": "Fjord Analytics", "tier": "pro", "domain": "fjordanalytics.com"},
+  {"account_id": "ACC-4", "name": "Tumbleweed Coffee", "tier": "pro", "domain": "tumbleweedcoffee.co"},
+  {"account_id": "ACC-5", "name": "Kestrel Labs", "tier": "free", "domain": "kestrel-labs.dev"},
+  {"account_id": "ACC-6", "name": "Sunnyside Tutoring", "tier": "free", "domain": "sunnysidetutoring.org"}
+]

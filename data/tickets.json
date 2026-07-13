@@ -1,0 +1,1952 @@
+[
+  {
+    "ticket_id": "TKT-001",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-03-21T00:44:00+00:00",
+    "summary": "CSV export missing custom fields",
+    "description": "When I export the user list to CSV from the team directory, the custom metadata fields we added aren't showing up in the spreadsheet. They display fine on the dashboard UI, but the CSV just omits those columns entirely. Is this a bug or is there a setting I missed?"
+  },
+  {
+    "ticket_id": "TKT-002",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-05T18:28:00+00:00",
+    "summary": "Missing metadata in subscription.updated webhook payloads AND 504 Gateway Timeout on CSV exports",
+    "description": "Hello,\n\nI am setting up some automated flows and ran into a roadblock with your API. The `subscription.updated` webhook events are arriving without the custom metadata block we passed during creation. According to your v2 docs, the metadata object should be nested under the customer payload, but it's completely missing from the JSON body we receive on our end. Can you verify if this is a known bug?\n\nAdditionally, we are trying to export our historical user audit logs via the dashboard (Reporting -> Audit Logs -> Export CSV), but the request keeps spinning for about 3 minutes and then throws a '504 Gateway Timeout' error. We need this data for a compliance review by Friday. Is there an alternative way to extract this, or can you fix the timeout issue?"
+  },
+  {
+    "ticket_id": "TKT-003",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Chloe Dupont",
+      "email": "chloe.dupont@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-22T03:41:00+00:00",
+    "summary": "Locked out of SSO login",
+    "description": "Hi, I'm trying to log in via Okta but it keeps redirecting me back to the Meridian login page with an 'invalid_grant' error. My IT team says everything is fine on our end. Can you reset my session or check if my account is locked?"
+  },
+  {
+    "ticket_id": "TKT-004",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Dave K.",
+      "email": "dave.k@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-08T04:48:00+00:00",
+    "summary": "Salesforce sync mapped roles broken / Cannot upgrade plan (payment screen frozen)",
+    "description": "Hey, got two weird things going on. \n\n1. I'm trying to map our Salesforce profile roles to Meridian roles, but the custom fields aren't showing up in the dropdown mapping menu under Integrations. It only shows standard SF fields. How do we get it to pull the custom schema?\n\n2. I also need to upgrade our account to the Enterprise tier right now because we hit our API limit, but when I click 'Confirm Upgrade' on the billing page, the blue spinner just spins forever. I checked the console and it's throwing some Javascript error about a missing stripe element. Can you manually bump us to Enterprise on your end and charge the card on file?"
+  },
+  {
+    "ticket_id": "TKT-005",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-04-05T18:26:00+00:00",
+    "summary": "Webhook delivery failing with 504 gateway timeout",
+    "description": "Hi support team,\n\nWe are noticing that our webhook endpoint (https://api.collabtech.io/v1/meridian-receiver) is failing to receive 'invoice.paid' events. Looking at our gateway logs, we aren't even seeing the incoming requests hit our server, but your dashboard shows multiple retries with a 504 Gateway Timeout error. \n\nIs there an issue with your outbound webhook delivery service right now, or is there a specific IP range we need to whitelist? This is holding up our automated provisioning, so any quick guidance would be appreciated."
+  },
+  {
+    "ticket_id": "TKT-006",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-15T07:02:00+00:00",
+    "summary": "Webhook delivery failing with 504 gateway timeout",
+    "description": "We're suddenly seeing a massive spike in webhook delivery failures from Meridian to our receiving endpoint. Your dashboard is showing 504 timeouts for the invoice.paid event. Our servers are completely healthy and we haven't changed anything on our end. Is there an outage or a latency issue on your delivery queue? This is delaying user provisioning for our paid customers."
+  },
+  {
+    "ticket_id": "TKT-007",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Thomas Wright",
+      "email": "thomas.wright@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-31T08:59:00+00:00",
+    "summary": "Unexpected payload data in webhooks",
+    "description": "Hi, we love the platform so far. I was looking through our webhook logs this afternoon to debug a different issue, and I noticed that the payloads for our `subscription.created` events are containing what looks like full credit card numbers, billing addresses, and names for users that do not belong to our organization. I think some of them might be for a company called 'Vanguard Tech'. It\u2019s interesting data, but I suspect we shouldn't be receiving it. Let me know if you need me to delete these logs or if there is a setting we should change on our end."
+  },
+  {
+    "ticket_id": "TKT-008",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Alex Wong",
+      "email": "alex.wong@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-26T14:45:00+00:00",
+    "summary": "API Rate Limit headers discrepancy",
+    "description": "Hello, we are building an internal sync tool and noticed a discrepancy in the API headers. The X-RateLimit-Remaining header sometimes drops rapidly even when we are making sequential calls well within the 100 req/min limit. Are there specific endpoints (like /v1/exports) that have a lower rate limit than the standard API?"
+  },
+  {
+    "ticket_id": "TKT-009",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Hannah Abbott",
+      "email": "hannah.abbott@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-21T05:55:00+00:00",
+    "summary": "Double charged for this month's subscription",
+    "description": "Hi, I just checked our credit card statement and it looks like we were charged twice for our Meridian subscription on November 1st. There are two identical charges of $499.00. Can you please look into this and refund the duplicate charge? Thanks."
+  },
+  {
+    "ticket_id": "TKT-010",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-10T21:12:00+00:00",
+    "summary": "Feature request: Slack notification customization",
+    "description": "Love the Slack integration! It's super helpful. I was wondering if there is any plan to allow us to customize *which* channels get specific alerts? Right now, everything goes to one channel, which gets a bit noisy. We'd love to split billing alerts to #finance and user signups to #sales."
+  },
+  {
+    "ticket_id": "TKT-011",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Chloe Dupere",
+      "email": "chloe.dupere@fjordanalytics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-25T19:18:00+00:00",
+    "summary": "Can't change user role to 'Billing Admin'",
+    "description": "I'm trying to change my colleague's role to Billing Admin so they can manage our credit card, but the option is greyed out. I am an Admin myself. Do I need Owner permissions to do this?"
+  },
+  {
+    "ticket_id": "TKT-012",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Maya Lin",
+      "email": "maya.lin@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-02T18:44:00+00:00",
+    "summary": "UI bug on Team settings page",
+    "description": "Just wanted to report a minor UI bug. On the Team settings page, if you are using a smaller laptop screen (like a 13-inch Macbook), the 'Save Changes' button at the bottom of the user list gets cut off by the footer and is impossible to click unless you zoom out to 80% in the browser. Might want to fix that CSS wrapper!"
+  },
+  {
+    "ticket_id": "TKT-013",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Marcus Chen",
+      "email": "marcus.chen@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-04-25T10:47:00+00:00",
+    "summary": "URGENT: Entire team locked out of Meridian via Okta SSO",
+    "description": "Hi support, we just enabled the Okta integration for our tenant (domain: acme-corp.com) and now none of our users can log in. We are getting a 'SAML assertion invalid' error on the login screen. This is blocking our entire ops team. Can you please revert this or look at our metadata XML? I can't even get into the admin console to disable it myself."
+  },
+  {
+    "ticket_id": "TKT-014",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-06T00:16:00+00:00",
+    "summary": "URGENT: SSO IP-Restriction feature is missing/broken",
+    "description": "We are trying to lock down our Meridian dashboard so employees can only log in via SSO if they are on our corporate VPN IP range. I have looked everywhere in the Security tab and the IP-range restriction settings are completely missing. Your documentation says you support SSO, so why is the IP whitelisting broken? This is a massive security compliance issue for us. Point me to where this is hidden or get your engineers to fix it ASAP."
+  },
+  {
+    "ticket_id": "TKT-015",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Julian Alvarez",
+      "email": "julian.alvarez@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-06-02T11:18:00+00:00",
+    "summary": "Difference between 'Billing Admin' and 'Admin' roles",
+    "description": "Hi Meridian Support, we are onboarding a new accountant and I want to give them access to invoices and subscription plans, but I don't want them to be able to modify API keys or user roles. Should I assign them the 'Billing Admin' role? Does that role allow them to download invoices without seeing the API settings? The documentation isn't entirely clear on what 'Billing Admin' is restricted from."
+  },
+  {
+    "ticket_id": "TKT-016",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "David Miller",
+      "email": "david.miller@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-16T07:32:00+00:00",
+    "summary": "Request to update billing address on past invoices",
+    "description": "Hello, we recently updated our corporate address in our account settings, but our finance department needs the last three invoices (specifically INV-2023-09 and INV-2023-10) to reflect the new address for tax purposes. Can you please regenerate these and send them to billing@acme-corp.com?"
+  },
+  {
+    "ticket_id": "TKT-017",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Claire Beaumont",
+      "email": "claire.beaumont@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-13T21:39:00+00:00",
+    "summary": "Salesforce integration synced a bit too much",
+    "description": "Hello! We set up the Salesforce integration yesterday afternoon. It looks like it worked a bit too well\u2014it seems to have deleted all 450 of our active user accounts and roles inside Meridian, including our admin accounts. I'm currently using a personal trial account to send this chat. Whenever you guys have a free minute, could you help us restore those users? We can't really access our dashboard right now, so we're just taking an early lunch. Thanks so much!"
+  },
+  {
+    "ticket_id": "TKT-018",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Courtney Zhao",
+      "email": "courtney.zhao@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-02T16:23:00+00:00",
+    "summary": "Salesforce sync stopped updating account details",
+    "description": "Hey there! Our sales reps just noticed that new customer accounts created in Meridian over the last 24 hours aren't syncing over to Salesforce. I checked the integration settings page and it says 'Connected', but the sync log is totally blank for today. Usually it updates in real-time. Has something changed with the integration? We really need this working before our end-of-week pipeline review."
+  },
+  {
+    "ticket_id": "TKT-019",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Alice Sterling",
+      "email": "alice.sterling@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-07-02T01:20:00+00:00",
+    "summary": "Question regarding API rate limits on /v1/customers",
+    "description": "Hi team, we are planning a major data migration and will need to update about 50,000 customer records in Meridian via the REST API over a weekend. \n\nWhat is the hard rate limit on the PUT /v1/customers endpoint? Also, do you support bulk or batch updates for customer metadata so we can avoid hitting the limit?"
+  },
+  {
+    "ticket_id": "TKT-020",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Chen",
+      "email": "marcus.chen@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-07-03T22:05:00+00:00",
+    "summary": "Webhook delivery failing - endpoint returning 500 but we see 200s on our end",
+    "description": "Hi,\n\nWe're seeing a massive spike in webhook delivery failures on your end for the invoice.paid event. Our servers are logging 200 OK for these incoming requests, but your dashboard shows them as failed with a 500 error and is now retrying and rate-limiting us.\n\nThis is messing up our provisioning. Can you look at the delivery logs for workspace ID ws_992j281as?"
+  },
+  {
+    "ticket_id": "TKT-021",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Hassan Al-Farsi",
+      "email": "hassan.alfarsi@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-07T16:43:00+00:00",
+    "summary": "Exported CSV containing corrupted characters",
+    "description": "Hello, when we export our user logs to CSV, some of the names with special characters (like accents or umlauts) are showing up with weird symbols (e.g., 'Ren\u00c3\u00a9' instead of 'Ren\u00e9'). It looks like a character encoding issue on your export tool. Is it possible to force UTF-8 encoding on the CSV exports? Thank you."
+  },
+  {
+    "ticket_id": "TKT-022",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-06-14T06:52:00+00:00",
+    "summary": "Urgent: SAML SSO login failing & Incorrect charge on invoice INV-9042",
+    "description": "Hi support team,\n\nWe are facing two critical issues this morning. First, none of our team members can log in via Okta right now. We are getting a 'SAML response signature invalid' error on the Meridian login page. This is blocking our entire ops team. Did something change with your identity provider certs overnight?\n\nSecondly, looking at our latest invoice (INV-9042) that was charged yesterday, we were billed for 85 seats. However, we deactivated 12 users back on the 14th of last month, and your dashboard showed our active seat count as 73. We need a refund/credit for those extra seats as soon as possible.\n\nPlease let me know how to resolve both of these immediately.\n\nThanks,\nMarcus"
+  },
+  {
+    "ticket_id": "TKT-023",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Rachel Green",
+      "email": "rachel.green@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-21T05:24:00+00:00",
+    "summary": "Slack notifications channel change",
+    "description": "How do I change the Slack channel that receives billing alerts? Right now it's posting to #general and I want to redirect it to #finance-alerts. I tried re-running the integration setup but didn't see an option to change the destination channel."
+  },
+  {
+    "ticket_id": "TKT-024",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Jared Albright",
+      "email": "jared.albright@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-02T08:09:00+00:00",
+    "summary": "FALSE ADVERTISING AND INCOMPETENCE ON SLACK INTEGRATION PAGE!!!",
+    "description": "I am absolutely disgusted by the lack of attention to detail on your Slack integration setup screen. The description reads 'Click here to setup your Slack notifications.' SETUP IS A NOUN. THE VERB IS 'SET UP'. TWO WORDS. How does a multi-million dollar SaaS company let such a glaring grammatical error slip past your editors? It makes our entire dashboard look like it was built by high school dropouts. We pride ourselves on perfection, and having this illiterate garbage displayed to our administrators is completely unacceptable. If you don't fix this embarrassing typo IMMEDIATELY, we will be terminating our account and moving to Zapier directly. I will not have my staff subjected to this level of sloppy work. UNBELIEVABLE!!!"
+  },
+  {
+    "ticket_id": "TKT-025",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "David Cho",
+      "email": "david.cho@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-29T20:18:00+00:00",
+    "summary": "Quick question about missing billing records",
+    "description": "Hey team. Just doing some light end-of-month reconciliation. I ran a CSV export of our subscription billing history for the past year, and it looks like all data from March through August of this year is completely blank. The dashboard graph is also flatlined for those months, showing $0 revenue. We definitely had subscribers then, so I assume it's just a display thing on your end. No rush at all, but let me know if you need me to re-upload anything."
+  },
+  {
+    "ticket_id": "TKT-026",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Kenji Takahashi",
+      "email": "kenji.takahashi@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-18T10:31:00+00:00",
+    "summary": "Blank pages on PDF Invoice Export & API Authorization returning 401 for valid tokens",
+    "description": "Dear support team,\n\nWe have encountered two unrelated issues today:\n\n1. When we download our monthly billing PDFs from the billing history tab, the documents are generating incorrectly. The first page loads fine, but pages 2 and 3\u2014which should contain the itemized usage breakdown\u2014are completely blank. This is happening across multiple past invoices, not just the latest one.\n\n2. Our automated reporting scripts started failing tonight. We are getting a '401 Unauthorized' response from the `/v1/users` endpoint. I have confirmed that the Bearer tokens we are using are valid, active, and do not expire for another 6 months. I even tried generating a new secret key, but the API still rejects it with a 401. Was there an unscheduled API authentication update today?\n\nBest regards,\nKenji"
+  },
+  {
+    "ticket_id": "TKT-027",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "David Kim",
+      "email": "david.kim@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-07-05T02:19:00+00:00",
+    "summary": "CSV export for Q3 transactions is empty",
+    "description": "I'm trying to download the CSV export for our Q3 transaction history from the billing dashboard. The UI shows there are over 1,200 records, but when I click export and download the file, it only contains the header row and zero data rows. I tried it on Chrome and Safari, same thing. I need this for a finance meeting in an hour."
+  },
+  {
+    "ticket_id": "TKT-028",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Thomas Wright",
+      "email": "thomas.wright@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-06-29T22:35:00+00:00",
+    "summary": "Refund request for unused seats",
+    "description": "Hi, we accidentally added 15 new seats to our plan last week during a training session, but we actually only ended up needing 3 of them. I've already removed the extra 12 users from our dashboard. \n\nSince they were only active for a couple of days, is it possible to get a prorated refund or a credit applied to our next invoice? \n\nThanks for your help,\nTom"
+  },
+  {
+    "ticket_id": "TKT-029",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-03-31T20:45:00+00:00",
+    "summary": "SSO login page returning an error",
+    "description": "Hello, we've noticed a quick thing with our Meridian login portal today. Since about 8:00 AM EST, none of our staff or clients have been able to log in. It looks like it\u2019s throwing a 500 Internal Server Error for everyone who tries to authenticate via our Okta integration. It\u2019s actually given us a nice quiet morning to catch up on paperwork, but whenever you guys get around to looking at the login servers, we'd appreciate a heads up so we can get back to work. Thank you!"
+  },
+  {
+    "ticket_id": "TKT-030",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "David Rostova",
+      "email": "david.rostova@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-04T09:52:00+00:00",
+    "summary": "Webhook delivery failing with 504 gateway timeout",
+    "description": "We're seeing a high volume of webhook delivery failures for the \"subscription.updated\" event starting around 08:00 UTC today. Our servers are responding with 200 OK within 100ms, but your dashboard shows them timing out with a 504. Is there an egress issue on your side or latency in your webhook queue? Please let me know."
+  },
+  {
+    "ticket_id": "TKT-031",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-06-06T09:45:00+00:00",
+    "summary": "Update billing email address for invoices",
+    "description": "Hi there, Can we get our monthly invoices sent to billing@acme-corp.com instead of my personal email? I can't find where to change this in the billing portal. Thanks!"
+  },
+  {
+    "ticket_id": "TKT-032",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Sven Lindstrom",
+      "email": "sven.lindstrom@kestrel-labs.dev"
+    },
+    "channel": "portal",
+    "created_at": "2026-07-02T09:09:00+00:00",
+    "summary": "GET /v1/users returning 400 Bad Request on pagination",
+    "description": "Hi, I'm calling the /v1/users endpoint with limit=100 and starting_after set to a valid user ID. However, your API is returning a 400 response with the message 'Invalid cursor'. The ID definitely exists. Here is the curl request I'm running:\n\ncurl -X GET https://api.meridian.io/v1/users?limit=100&starting_after=usr_92jsh83 \\\n  -H \"Authorization: Bearer [token]\"\n\nCan you check if there's an issue with pagination cursor parsing?"
+  },
+  {
+    "ticket_id": "TKT-033",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Beatrice Vance",
+      "email": "beatrice.vance@kestrel-labs.dev"
+    },
+    "channel": "email",
+    "created_at": "2026-05-02T20:57:00+00:00",
+    "summary": "PDF invoices missing page numbers and cut off on margins",
+    "description": "When I download the PDF invoices to submit to our accounting system, the right margin is cut off, meaning the last digit of the total amounts is sometimes missing. This happens on multiple browsers. It makes the PDF practically useless for auditing. Can this formatting be fixed?"
+  },
+  {
+    "ticket_id": "TKT-034",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Dave Miller",
+      "email": "dave.miller@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-03T23:55:00+00:00",
+    "summary": "login",
+    "description": "locked out"
+  },
+  {
+    "ticket_id": "TKT-035",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Chloe Dupont",
+      "email": "chloe.dupont@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-03-25T16:50:00+00:00",
+    "summary": "Slack integration duplicate alerts & Can't update company billing address",
+    "description": "Hi there,\n\nOur team is getting really annoyed by the Slack integration. Every time a new customer signs up, the Meridian bot posts the notification to our sales channel three or four times instead of just once. It's cluttering up our chat. How do we stop these duplicate posts?\n\nOn another note, I am trying to update our company's billing address and VAT number in the Billing settings so our next invoice is correct. But when I click 'Save Changes' at the bottom of the form, nothing happens. The button doesn't register the click, there's no success message, and when I refresh, the old address is still there. I opened the browser console and there's a CORS error pointing to your billing domain. Can you help me update this?"
+  },
+  {
+    "ticket_id": "TKT-036",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Arjun Mehta",
+      "email": "arjun.mehta@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-11T17:05:00+00:00",
+    "summary": "Cannot change role for new team member",
+    "description": "I am an Admin on our account, but I'm unable to change a new user's role from 'Viewer' to 'Editor'. The dropdown is greyed out. Is there a limit on the number of Editors we can have on our current Growth plan?"
+  },
+  {
+    "ticket_id": "TKT-037",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Oliver Dupont",
+      "email": "oliver.dupont@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-07-04T18:36:00+00:00",
+    "summary": "Accidental double charge on card",
+    "description": "Hi, I was looking at our bank statement and noticed we were charged twice for our monthly subscription on Oct 1st. There are two identical charges of $299.00. Could you please refund one of these charges? Let me know if you need the transaction IDs."
+  },
+  {
+    "ticket_id": "TKT-038",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Niels Bohr",
+      "email": "niels.bohr@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-23T15:01:00+00:00",
+    "summary": "SCIM provisioning not deactivating users in Meridian",
+    "description": "We have set up Azure AD SCIM provisioning with Meridian. While creating and updating users works flawlessly, we noticed that when we deactivate a user in Azure AD, their status in Meridian remains 'Active'. \n\nThey lose SSO access, which is good, but they are still taking up a paid seat license in our billing. Is there a specific configuration we missed to ensure deprovisioning works?"
+  },
+  {
+    "ticket_id": "TKT-039",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Carlos Mendez",
+      "email": "carlos.mendez@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-14T14:33:00+00:00",
+    "summary": "URGENT: SAML Certificate expiring in 3 days",
+    "description": "We received an automated warning that our SAML signing certificate for Meridian SSO is expiring in 3 days. I tried uploading the new metadata XML file in our security settings, but I keep getting a validation error: 'Signature verification failed'. If this isn't updated by Friday, 500+ of our employees won't be able to log in. Please help us get this certificate updated ASAP."
+  },
+  {
+    "ticket_id": "TKT-040",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-04-09T06:18:00+00:00",
+    "summary": "Feature request: Dark mode for dashboard",
+    "description": "Hey team, loving the platform so far. Just a quick quality-of-life request: are there any plans to add a dark mode to the web dashboard? I spend a lot of time looking at the analytics screens late at night and my eyes are begging for it. Keep up the great work!"
+  },
+  {
+    "ticket_id": "TKT-041",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Robert Miller",
+      "email": "robert.miller@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-06-22T17:42:00+00:00",
+    "summary": "PDF export of monthly report is completely blank",
+    "description": "Hi, I am trying to run the Monthly Revenue report for October and export it as a PDF to present at our board meeting in an hour. Every time I click 'Export PDF', the file downloads, but when I open it, the document is completely blank (0 bytes). \n\nI tried doing it in both Chrome and Safari and got the same result. CSV export works, but I really need the formatted PDF. Please help."
+  },
+  {
+    "ticket_id": "TKT-042",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Alex Thompson",
+      "email": "alex.thompson@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-07-04T05:13:00+00:00",
+    "summary": "Zapier trigger \"New Invoice Paid\" is sending duplicate data",
+    "description": "Hey guys, we have a Zapier zap set up to ping our CRM when an invoice is marked paid. For some reason, it's firing twice for every invoice. Zapier support says the webhook trigger from Meridian is being sent twice. Is there any known issue with duplicate events being fired on your end?"
+  },
+  {
+    "ticket_id": "TKT-043",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Marcus Chen",
+      "email": "marcus.chen@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-07T13:57:00+00:00",
+    "summary": "Double charged for seat upgrades last month",
+    "description": "Hi, I'm looking at our latest invoice (inv_948201) and it looks like we were charged twice for the 5 seats we added on October 12th. There's a line item for the prorated amount, and then another line item for the full monthly amount for those same 5 seats. Could you please check this and issue a refund or credit? Thanks."
+  },
+  {
+    "ticket_id": "TKT-044",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-11T07:02:00+00:00",
+    "summary": "Need copy of PDF invoice for April 2024",
+    "description": "Hi support, our accounting department is doing our monthly reconciliation and they've noticed we're missing the PDF invoice for April 2024 (Invoice #INV-2024-0489). I can see it in the billing dashboard but there doesn't seem to be a button to download the PDF version directly, only the CSV receipt. Could you please email me the official PDF copy for our records? Thank you!"
+  },
+  {
+    "ticket_id": "TKT-045",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Omar Farooq",
+      "email": "omar.farooq@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-21T22:28:00+00:00",
+    "summary": "MFA setup prompt on login",
+    "description": "Hi, today when I logged in, it suddenly forced me to set up an authenticator app. Did our admin turn on MFA? I don't have my work phone with me today. Is there a way to skip this for 24 hours so I can get to my dashboard?"
+  },
+  {
+    "ticket_id": "TKT-046",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Ingrid Bergman",
+      "email": "ingrid.bergman@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-18T21:22:00+00:00",
+    "summary": "CSV Export delimiter issue with commas in company names",
+    "description": "Hello,\n\nWe are having trouble parsing the CSV exports from our Customers table. It looks like some of our customer company names have commas in them (e.g., 'Acme, Inc.'). \n\nYour exporter does not seem to wrap these fields in double quotes, which causes our spreadsheet software to split the company name into two separate columns, completely misaligning the rest of the row data. Can you look into standardizing the CSV escaping?"
+  },
+  {
+    "ticket_id": "TKT-047",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Chloe Henderson",
+      "email": "chloe.henderson@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-23T16:35:00+00:00",
+    "summary": "User list CSV export is blank",
+    "description": "Hi support,\n\nI'm trying to export our complete user list from the Settings > Users tab. Every time I click 'Export to CSV', the download starts, but the resulting file is completely empty (0 bytes) except for the header row.\n\nWe have about 1,200 users in our system. Is there a size limit or is this a bug?\n\nBest,\nChloe"
+  },
+  {
+    "ticket_id": "TKT-048",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-20T05:45:00+00:00",
+    "summary": "still broken",
+    "description": "???"
+  },
+  {
+    "ticket_id": "TKT-049",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Priya Patel",
+      "email": "priya.patel@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-07-06T04:55:00+00:00",
+    "summary": "API Rate Limits query for /v1/customers endpoint",
+    "description": "Hello, we are planning a major migration and will need to update about 50,000 customer records via the API over a weekend. What are the rate limits for the \"POST /v1/customers\" endpoint? Can we temporarily increase our rate limit for a 48-hour window starting Friday, November 17th? I want to avoid getting rate-limited (HTTP 429) during our migration window."
+  },
+  {
+    "ticket_id": "TKT-050",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Arjun Mehta",
+      "email": "arjun.mehta@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-28T05:27:00+00:00",
+    "summary": "Salesforce sync delay",
+    "description": "How often does the Salesforce integration sync account status? I noticed that when we close a deal in SFDC, it takes about 15-20 minutes for the corresponding account in Meridian to update. Is there a way to trigger an instant sync or reduce this polling interval?"
+  },
+  {
+    "ticket_id": "TKT-051",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Christian Thorne",
+      "email": "christian.thorne@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-06-08T17:18:00+00:00",
+    "summary": "VIOLATION OF OUR BRAND STANDARD / DISGUSTING COLOR SCHEME",
+    "description": "I opened up our Meridian portal this morning and I am physically sick looking at the new 'Active' status badge color. It is a garish, neon lime green that completely clashes with our corporate identity and looks incredibly unprofessional to our clients. WHO DECIDED THIS WAS OKAY?? It is an eyesore and an absolute insult to our intelligence. We demand that you change this back to the previous forest green or give us the ability to override your terrible color choices. I do not pay for a premium enterprise subscription just to have my team blinded by your design team's horrific taste. If this isn't reverted by tomorrow morning, I am calling our account representative and cancelling our entire subscription. DO NOT ignore this email!!!"
+  },
+  {
+    "ticket_id": "TKT-052",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Maya Lin",
+      "email": "maya.lin@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-11T15:35:00+00:00",
+    "summary": "Monthly MRR report is displaying incorrect metrics",
+    "description": "The MRR chart on our main dashboard is completely wrong today. It's showing a drop of almost $40k, but when I look at our active subscriptions, they are all active and up to date. It looks like it's not counting any of our multi-year enterprise plans in the graph. This is incredibly stressful because our executive team looks at this dashboard daily. Please fix this bug."
+  },
+  {
+    "ticket_id": "TKT-053",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-20T14:31:00+00:00",
+    "summary": "Locked out of account - Okta SSO error",
+    "description": "Help! Our entire team is locked out of Meridian. We just updated our SAML certificate in Okta, and now when anyone tries to log in, we get an error saying 'SAML assertion validation failed'. I am the admin and I can't even get in to revert the settings. Please help me bypass this or reset our SSO config."
+  },
+  {
+    "ticket_id": "TKT-054",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Julian Thorne",
+      "email": "julian.thorne@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-04-06T22:00:00+00:00",
+    "summary": "Question about \"Active Users\" metric calculation",
+    "description": "Hi Meridian Support,\n\nI'm looking at our Usage Dashboard and trying to understand how the \"Monthly Active Users\" metric is calculated. Does it count users who just log in, or do they have to perform an action? I couldn't find a clear definition in your docs. Thanks!"
+  },
+  {
+    "ticket_id": "TKT-055",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-04-30T20:56:00+00:00",
+    "summary": "Dashboard discrepancy: Active users count mismatch",
+    "description": "Hello, the 'Active Users' chart on our main dashboard is showing 412 active users for this week, but when we export the user list to CSV, there are only 380 active users. Why is there a difference of 32 users? Are deactivated users still being counted in the dashboard graph? Please clarify."
+  },
+  {
+    "ticket_id": "TKT-056",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Amara Diallo",
+      "email": "amara.diallo@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-08T15:52:00+00:00",
+    "summary": "Custom role permissions query",
+    "description": "Hi there, we are trying to set up a 'Read-Only Analyst' role. We want them to be able to view the dashboard reports but NOT see any of the billing or API keys. I see 'Reader' and 'Admin' as default roles, but is there a way to customize permissions more granularly under our current Scale plan?"
+  },
+  {
+    "ticket_id": "TKT-057",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Devendra Patel",
+      "email": "devendra.patel@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-21T21:04:00+00:00",
+    "summary": "Webhook delivery failing with 504 errors",
+    "description": "We are suddenly seeing a spike in failed webhook deliveries for the `invoice.paid` event. Our servers are completely healthy and we aren't seeing these errors for any of our other integrations. It looks like the requests from Meridian are timing out on your end before they reach us, or possibly getting blocked. Can you check your outbound webhook logs for our account (ID: act_99281a) to see what's causing the 504 gateway timeouts?"
+  },
+  {
+    "ticket_id": "TKT-058",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Robert Kim",
+      "email": "robert.kim@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-05T18:32:00+00:00",
+    "summary": "Dashboard revenue chart doesn't match CSV export",
+    "description": "I'm preparing our quarterly financial report and ran into an issue. On the main dashboard, the 'Total Revenue' chart for Q2 shows $142,500. However, when I export the transaction history as a CSV and sum up the 'Amount' column for the exact same date range, the total comes out to $141,250. There is a $1,250 discrepancy that I can't account for. Are there refunds or pending charges that are calculated differently in the chart vs the CSV export?"
+  },
+  {
+    "ticket_id": "TKT-059",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Todd Henderson",
+      "email": "todd.henderson@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-12T14:21:00+00:00",
+    "summary": "Zapier integration stopped working",
+    "description": "Our Zapier connection is broken. It was working yesterday but now none of our new user signups are sending to our Google Sheet. Can you look at this?"
+  },
+  {
+    "ticket_id": "TKT-060",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@sunnysidetutoring.org"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-30T03:27:00+00:00",
+    "summary": "Quick question about MRR reporting",
+    "description": "Hi. On our main dashboard, the MRR graph seems to be lagging behind our actual billing. Does that chart update in real-time, or is there a delay (like 24 hours)? Just trying to make sure our numbers match up for a meeting tomorrow morning."
+  },
+  {
+    "ticket_id": "TKT-061",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-29T06:41:00+00:00",
+    "summary": "Webhook delivery failing with 504 gateway timeout",
+    "description": "We've started seeing a high volume of webhook delivery failures on the 'subscription.updated' event today. Our endpoint is up and responding to manual requests within 200ms, but your dashboard shows Meridian is timing out after 10 seconds. Is there an egress issue on your end or a specific IP range we need to whitelist? It was working fine yesterday."
+  },
+  {
+    "ticket_id": "TKT-062",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Priya Patel",
+      "email": "priya.patel@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-28T19:44:00+00:00",
+    "summary": "Salesforce integration mapping error",
+    "description": "We are trying to map custom fields from Meridian to Salesforce. The integration is successfully connecting, but the field 'Plan Type' is not appearing in the dropdown menu when we try to set up the field mapping in your Salesforce integration settings. It only shows default fields like Name and Email. How can we get custom fields to sync?"
+  },
+  {
+    "ticket_id": "TKT-063",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Rajesh Patel",
+      "email": "rajesh.patel@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-06-28T00:25:00+00:00",
+    "summary": "Cannot delete former employee account",
+    "description": "I am trying to delete the user account of an employee who left our company yesterday, but the 'Delete' button is greyed out. It says they are the 'Primary Owner', but I am also an Administrator. How do I transfer ownership to myself so I can safely remove their access? This is an urgent security requirement."
+  },
+  {
+    "ticket_id": "TKT-064",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-05T04:47:00+00:00",
+    "summary": "CRITICAL: API DELETE endpoint for invoices is completely broken (404 error)",
+    "description": "I am trying to run a cleanup script using your REST API and your invoices endpoint is completely broken. Every time I send a DELETE request to /v1/invoices/{invoice_id} it returns a 404 Not Found. This is a basic CRUD operation! How am I supposed to manage our billing cycles if your API won't let us delete draft invoices? Fix this immediately, we have a major audit next week and our database is cluttered with test invoices we can't get rid of."
+  },
+  {
+    "ticket_id": "TKT-065",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Kenji Sato",
+      "email": "kenji.sato@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-15T02:20:00+00:00",
+    "summary": "How to bypass SSO for external contractor",
+    "description": "We have set up forced Google SSO for our organization. However, we have a freelance contractor who needs access to our Meridian dashboard but does not have an email on our corporate domain (@ourcompany.com). Is there a way to whitelist their specific email address to log in with a password instead of SSO?"
+  },
+  {
+    "ticket_id": "TKT-066",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Kenji Sato",
+      "email": "kenji.sato@kestrel-labs.dev"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-08T08:44:00+00:00",
+    "summary": "API",
+    "description": "not working"
+  },
+  {
+    "ticket_id": "TKT-067",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Emma Watson",
+      "email": "emma.watson@kestrel-labs.dev"
+    },
+    "channel": "email",
+    "created_at": "2026-03-25T22:55:00+00:00",
+    "summary": "Deactivating vs Deleting a user",
+    "description": "Quick question: what is the difference between deactivating a user and deleting them entirely? If I deactivate someone, does it still count towards our seat limit on the billing plan? Thanks!"
+  },
+  {
+    "ticket_id": "TKT-068",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Tariq Mahmood",
+      "email": "tariq.mahmood@fjordanalytics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-27T15:58:00+00:00",
+    "summary": "Slack notifications for failed payments",
+    "description": "Hey! Is there a way to configure the Slack integration to send a message to our #finance-alerts channel whenever a subscription payment fails? I see options for signup alerts, but not billing failures."
+  },
+  {
+    "ticket_id": "TKT-069",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-04-04T19:20:00+00:00",
+    "summary": "Zapier triggers question + Critical security bug with 'Viewer' role permissions",
+    "description": "Hi Meridian Support,\n\nI hope you're doing well. I have a quick question about your Zapier integration: is there a trigger for 'User Deleted'? I only see 'New User Created' and 'User Updated' in the Zapier editor. We need to automate offboarding tasks when a user is removed from Meridian.\n\nSeparately, we found a pretty serious security vulnerability in your platform's user management. When we invite a new user and assign them the 'Viewer' role, they are somehow able to edit and delete API keys under the developer settings. They should have read-only access. I tested this with a dummy account and confirmed I could delete a live webhook. This is a massive security issue for us\u2014can you please investigate why Viewers are getting Editor privileges in the developer tab?"
+  },
+  {
+    "ticket_id": "TKT-070",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-06-21T00:32:00+00:00",
+    "summary": "Dashboard charts not updating in real-time?",
+    "description": "Hi there,\n\nI noticed that the MRR and Active Customer counts on our main dashboard haven't changed since yesterday afternoon, even though we had at least 4 new sign-ups and upgrades this morning. Is there a delay in the reporting pipeline, or do we need to manually refresh the cache somehow? Thanks!"
+  },
+  {
+    "ticket_id": "TKT-071",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@fjordanalytics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-18T07:00:00+00:00",
+    "summary": "CSV Export formatting is broken",
+    "description": "Hey there. I'm trying to export our monthly active user report to CSV, but the date columns are coming out completely garbled. It looks like \"2023-11-23T14:30:00Z\" is being split across two columns because of a weird comma placement in the raw export data? It's breaking my Excel macros. Is this a known bug?"
+  },
+  {
+    "ticket_id": "TKT-072",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Daniel Kim",
+      "email": "daniel.kim@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-13T01:03:00+00:00",
+    "summary": "Can't delete pending user invitations",
+    "description": "I invited a couple of contractors to our workspace last month, but they never accepted the invites and their contracts are now over. I want to revoke/delete these pending invitations, but there is no 'Delete' or 'Cancel' button next to their names in the User Management console. They are just stuck there as \"Pending\". How do I remove them?"
+  },
+  {
+    "ticket_id": "TKT-073",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "David Miller",
+      "email": "david.miller@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-07-07T12:23:00+00:00",
+    "summary": "Why was I charged for 15 extra seats?",
+    "description": "Hi. I just got our latest invoice and I noticed we were billed for 45 seats this month. But when I go to my team page, we only have 30 active users. Why am I being charged for these extra 15 seats? I did invite some people last month but they expired and were never accepted. Are pending invites counted as active seats? If so, that seems a bit unfair. I'd like to get this adjusted and refunded if possible."
+  },
+  {
+    "ticket_id": "TKT-074",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Emily Vance",
+      "email": "emily.vance@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-17T19:58:00+00:00",
+    "summary": "Salesforce sync broke and overwriting data",
+    "description": "Please help, our Salesforce integration seems to have gone haywire. It is currently syncing dummy email addresses from Meridian back into Salesforce, which is overwriting our active sales leads. I need someone to pause this sync immediately for our account (ID: org_88231). This is a massive issue for our sales team."
+  },
+  {
+    "ticket_id": "TKT-075",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Todd Fitzpatrick",
+      "email": "todd.fitzpatrick@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-18T22:03:00+00:00",
+    "summary": "Can't change user role to Billing Admin",
+    "description": "Quick question\u2014I'm trying to change one of our team members (Clara Vance) to the \"Billing Admin\" role, but the dropdown only shows \"Admin\", \"Member\", and \"Viewer\". Am I missing a permission or do we need to upgrade our plan for custom billing roles?"
+  },
+  {
+    "ticket_id": "TKT-076",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-15T16:18:00+00:00",
+    "summary": "Zapier trigger for 'User Password Changed' is broken",
+    "description": "Trying to set up a critical security workflow in Zapier. I need a Zap to trigger whenever a user changes their password in Meridian, but your Zapier integration is broken. The trigger for 'Password Updated' isn't showing up in the dropdown list at all. I only see 'User Created' and 'User Deleted'. Why is this broken? We need this to log password changes to our security audit trail. Please fix the integration and add the password change trigger back."
+  },
+  {
+    "ticket_id": "TKT-077",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Rachel Green",
+      "email": "rachel.green@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-04-03T06:04:00+00:00",
+    "summary": "Feature request: Custom branding on exported PDF reports",
+    "description": "Hello, we love the PDF reporting feature! It saves us a lot of time. However, our clients would really like to see our own company logo on these PDFs instead of the Meridian branding. Is there any way to upload a custom logo for reports, or is this on your roadmap for the premium tier? Let me know, thanks!"
+  },
+  {
+    "ticket_id": "TKT-078",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-23T00:51:00+00:00",
+    "summary": "Slack notifications stopped working",
+    "description": "Hey there! Our Slack integration seems to have stopped sending alerts to our #meridian-alerts channel. It was working yesterday but we haven't received anything today even though we've had several new signups. I tried disconnecting and reconnecting the Slack integration but it didn't help. Any ideas?"
+  },
+  {
+    "ticket_id": "TKT-079",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Samantha Kross",
+      "email": "samantha.kross@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-06-11T18:09:00+00:00",
+    "summary": "CRITICAL BUG IN WEBHOOK DOCUMENTATION - FIX NOW OR WE LEAVE",
+    "description": "I have had it with your platform. Absolutely had it. I was trying to configure our webhook secrets today and in the helper tooltip it says 'recieve' instead of 'receive'. I before E except after C!!! Did no one at Meridian go to primary school?! This is a CRITICAL lack of quality control. If your documentation is riddled with basic spelling mistakes, your API code is probably full of security vulnerabilities too. I am extremely concerned about the integrity of your platform. Fix this typo IMMEDIATELY or we are pulling our integration, canceling our plan, and posting this all over Hacker News and Twitter to show everyone how amateurish your 'enterprise' platform really is. I expect a confirmation that this is fixed in production today!"
+  },
+  {
+    "ticket_id": "TKT-080",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Chloe Henderson",
+      "email": "chloe.henderson@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-21T10:59:00+00:00",
+    "summary": "CSV Export of Transaction History failing for large date ranges",
+    "description": "Hi, I'm trying to export our transactions for the entire fiscal year (Jan 1 - Dec 31) to CSV. Every time I click export, the spinner spins for about 2 minutes and then I get a generic \"Export failed\" error message. If I run it month-by-month it works, but that is really tedious. Is there a limit on how many rows can be exported at once? Can you run this export for me on your end?"
+  },
+  {
+    "ticket_id": "TKT-081",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Chen",
+      "email": "marcus.chen@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-15T13:10:00+00:00",
+    "summary": "Slack alerts stopped working",
+    "description": "Hey, our team Slack channel isn't getting any notifications from Meridian anymore. It was working fine yesterday. Did something change on your end? I checked our integration settings and it says 'Connected' but test messages aren't going through."
+  },
+  {
+    "ticket_id": "TKT-082",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-31T02:05:00+00:00",
+    "summary": "UNACCEPTABLE AND UNPROFESSIONAL!!!! FIX THIS IMMEDIATELY OR WE ARE CANCELING OUR CONTRACT TODAY!!!",
+    "description": "I am absolutely LIVID. I was just reviewing our billing portal to approve our enterprise renewal and what do I see? Under the main billing header, your platform says 'Subscirption Details'. SUB-SCIRP-TION. ARE YOU KIDDING ME?!?! Is this a joke? We pay you tens of thousands of dollars a year and you can't even run a basic spellcheck on your system?! If your engineers are this LAZY and incompetent with basic English, how can I trust your platform with our entire user management and SSO security? This is a massive red flag. I want this fixed in the next 10 minutes or I am instructing our finance team to block all future payments to Meridian and we are migrating to Okta. Unbelievable."
+  },
+  {
+    "ticket_id": "TKT-083",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Sophia Martinez",
+      "email": "sophia.martinez@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-06-10T15:50:00+00:00",
+    "summary": "Account suspended warning but we already paid",
+    "description": "Hello, I just received an automated email saying our account will be suspended in 48 hours due to an unpaid invoice (INV-00839). However, our bank records show the wire transfer of $4,200 went through on Monday, and it was marked as settled. I've attached the bank confirmation receipt. Please do not suspend our account as we use Meridian for our core production authentication. Can someone please verify this payment manually and update our status?"
+  },
+  {
+    "ticket_id": "TKT-084",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Sven Lindstrom",
+      "email": "sven.lindstrom@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-28T11:05:00+00:00",
+    "summary": "API key rotation question",
+    "description": "Quick question: If I generate a new API key in the developer console, does the old one immediately expire, or is there a grace period where both are active? We want to avoid downtime during our monthly credential rotation."
+  },
+  {
+    "ticket_id": "TKT-085",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Siddharth Nair",
+      "email": "siddharth.nair@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-12T16:48:00+00:00",
+    "summary": "Zapier integration throwing 'Unauthorized' errors",
+    "description": "Hey, all of our active Zaps that connect to Meridian suddenly stopped working about an hour ago. We keep getting 'Unauthorized' errors from Zapier. Did our API keys expire or did you guys push an update that broke the integration? I need to get this back online."
+  },
+  {
+    "ticket_id": "TKT-086",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-14T12:41:00+00:00",
+    "summary": "Feature request: Dark mode for the dashboard",
+    "description": "Hi there! I spend a lot of time in the Meridian dashboard late at night managing our billing schedules, and my eyes are killing me. Is there a dark mode option hidden somewhere that I missed? If not, could you please add this to your product roadmap? It would make a huge difference for those of us working night shifts. Thanks for the great product!"
+  },
+  {
+    "ticket_id": "TKT-087",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Jessica Taylor",
+      "email": "jessica.taylor@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-22T16:46:00+00:00",
+    "summary": "Zapier trigger not firing for new invoices",
+    "description": "Hey there! Our Zapier integration is supposed to trigger when a 'New Invoice' is generated in Meridian, but it hasn't fired for the last three invoices we sent out today. I tested the connection in Zapier and it says it's healthy. Is there a delay on your end for triggering Zapier webhooks?"
+  },
+  {
+    "ticket_id": "TKT-088",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Samantha Green",
+      "email": "samantha.green@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-17T11:39:00+00:00",
+    "summary": "Zapier \"New Invoice\" trigger not working",
+    "description": "Hi! I set up a Zap to send a Slack message whenever a 'New Invoice' is generated in Meridian. During the setup in Zapier, the test connection works and pulls sample data, but when a real invoice actually gets generated in our account, the Zap doesn't run. I checked Zapier history and it shows no runs. Is there something special we have to configure in Meridian to trigger Zapier webhooks, or is this a known issue?"
+  },
+  {
+    "ticket_id": "TKT-089",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Gregory House",
+      "email": "gregory.house@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-07-03T15:38:00+00:00",
+    "summary": "Card declined while trying to upgrade to Scale plan",
+    "description": "We are trying to upgrade our account to the Scale plan because we are about to hit our user limit, but our corporate card keeps getting declined. I've verified with our bank that the card is active and has plenty of credit. \n\nThe error on your page just says 'Card Declined' with no code. Can you look at your Stripe logs and tell me why it is being blocked? We need this upgraded today."
+  },
+  {
+    "ticket_id": "TKT-090",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-21T02:07:00+00:00",
+    "summary": "Incorrect VAT on Invoice #INV-2023-8902",
+    "description": "Hi there, I just received our latest invoice (INV-2023-8902) and noticed that we were charged the standard VAT rate even though we updated our VAT ID (EU372019482) in our billing profile last month. Could you please look into this, refund the overcharged amount, and reissue the invoice with the correct tax exemption? Thanks."
+  },
+  {
+    "ticket_id": "TKT-091",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Tyler Chen",
+      "email": "tyler.chen@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-13T23:53:00+00:00",
+    "summary": "Subscription Billing is broken - cannot accept Bitcoin/Ethereum",
+    "description": "We just launched our new pricing plans using Meridian's billing portal and we are getting furious emails from our Web3 customers. The checkout widget is completely broken\u2014there is absolutely no option for them to connect their crypto wallets or pay in BTC/ETH. It only shows credit card and ACH. We chose Meridian specifically to automate our subscription billing, and not having crypto payment gateways functional out of the box is a dealbreaker. Get this fixed, we are losing sales by the minute."
+  },
+  {
+    "ticket_id": "TKT-092",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@kestrel-labs.dev"
+    },
+    "channel": "email",
+    "created_at": "2026-06-08T18:23:00+00:00",
+    "summary": "Salesforce integration syncing incorrect billing addresses",
+    "description": "Hey team, we noticed yesterday that our Salesforce sync is pulling the wrong billing addresses for new accounts. It seems to be overwriting the billing street address with the shipping street address. This is messing up our invoicing process for several high-value clients. Can someone look into why the mapping is suddenly flipped? We haven't changed our Salesforce schema recently."
+  },
+  {
+    "ticket_id": "TKT-093",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Hannah Abbott",
+      "email": "hannah.abbott@sunnysidetutoring.org"
+    },
+    "channel": "email",
+    "created_at": "2026-06-08T22:54:00+00:00",
+    "summary": "Feature request: Dark mode for dashboard",
+    "description": "Hi Meridian team! I absolutely love using your platform, but as a developer who works late hours, the bright white dashboard is really hard on my eyes. Are there any plans to implement a dark mode toggle? My whole team would highly appreciate it if this is on your roadmap! Thanks for building an awesome product."
+  },
+  {
+    "ticket_id": "TKT-094",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Vikram Singh",
+      "email": "vikram.singh@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-28T00:10:00+00:00",
+    "summary": "Sudden 429 Too Many Requests errors",
+    "description": "We just started receiving a high volume of 429 Too Many Requests errors on our automated sync script. We haven't changed our request volume, which has always been around 5 requests per second. Did you recently lower the rate limits for our tier? We are on the Growth plan. This is impacting our core integration."
+  },
+  {
+    "ticket_id": "TKT-095",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-25T07:53:00+00:00",
+    "summary": "Urgent: SAML SSO login failing for all users",
+    "description": "We just updated our Okta configuration on our end and now none of our team members can log into Meridian. They are getting a 'SAML assertion invalid' error page. This is blocking our entire ops team. Can someone please jump on a call or check our SSO metadata settings? I need this resolved urgently."
+  },
+  {
+    "ticket_id": "TKT-096",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Jonathan Burke",
+      "email": "jonathan.burke@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-29T17:44:00+00:00",
+    "summary": "Salesforce integration mapping mismatch",
+    "description": "We recently enabled the Meridian Salesforce integration, but we've run into an issue. The 'Plan Type' field in Meridian is mapping to the wrong custom field in our Salesforce Contact object, which is messing up our sales pipeline reporting. \n\nWhen we try to edit the field mappings in the integration settings page, the dropdowns are grayed out. Can you unlock this or help us re-map 'Plan Type' to 'Meridian_Subscription_Tier__c'?"
+  },
+  {
+    "ticket_id": "TKT-097",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Chloe Vance",
+      "email": "chloe.vance@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-17T23:27:00+00:00",
+    "summary": "Can we restrict a user to read-only export access?",
+    "description": "Quick question: We have an external auditor coming in next week. I want to invite them to our Meridian workspace so they can pull billing exports, but I don't want them to be able to change any plan settings or delete users. Is there a specific role that allows exporting CSVs but blocks configuration changes?"
+  },
+  {
+    "ticket_id": "TKT-098",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Chloe Dupont",
+      "email": "chloe.dupont@sunnysidetutoring.org"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-04T02:14:00+00:00",
+    "summary": "Zapier trigger \"New User Created\" firing multiple times",
+    "description": "Our Zapier integration is acting crazy. Every time we add a single new user in Meridian, the \"New User Created\" trigger fires 3 or 4 times. We're getting blasted with duplicate Slack notifications. Is there a loop happening on your side?"
+  },
+  {
+    "ticket_id": "TKT-099",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@sunnysidetutoring.org"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-08T02:48:00+00:00",
+    "summary": "refund",
+    "description": "refund please"
+  },
+  {
+    "ticket_id": "TKT-100",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Oliver Dupont",
+      "email": "oliver.dupont@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-07-03T02:02:00+00:00",
+    "summary": "How to enforce 2FA for non-SSO users?",
+    "description": "Quick question: we have SSO set up for our main employees, but we also have a few external contractors who log in with username/password. Is there a setting to force 2FA just for those non-SSO accounts? I couldn't find it in the security settings."
+  },
+  {
+    "ticket_id": "TKT-101",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Amanda Ross",
+      "email": "amanda.ross@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-06-01T02:06:00+00:00",
+    "summary": "Salesforce sync error: 'DUPLICATE_VALUE'",
+    "description": "Hi support team, we're encountering an error with our Salesforce integration. Several accounts are showing a sync status of 'Failed' with the error message: 'DUPLICATE_VALUE: duplicate value found: Meridian_ID__c duplicates value on record'. This is blocking our sales team from seeing updated usage metrics. Can you help us resolve this mapping conflict?"
+  },
+  {
+    "ticket_id": "TKT-102",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-18T14:28:00+00:00",
+    "summary": "Locked out of account after SAML setup",
+    "description": "Hi, we just tried to enforce Okta SAML SSO for our organization (Vance Media) and now none of our team members can log in. We are getting a 'SAML configuration error' on the login screen. I am the account administrator and I can't even get in to disable it or fix the metadata URL. This is extremely urgent as our entire ops team is currently locked out of Meridian. Please help us bypass this or disable the SSO requirement temporarily so we can log back in and fix it."
+  },
+  {
+    "ticket_id": "TKT-103",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Patricia Miller",
+      "email": "patricia.miller@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-05-20T13:35:00+00:00",
+    "summary": "Double charged for this month's subscription",
+    "description": "Hello, I looked at our credit card statement and it looks like we were charged $499 twice on October 1st. I only see one invoice for this month in our dashboard under Billing History. Can you please check this and issue a refund for the duplicate charge? Thank you."
+  },
+  {
+    "ticket_id": "TKT-104",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Rachel Green",
+      "email": "rachel.green@tumbleweedcoffee.co"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-02T19:48:00+00:00",
+    "summary": "Zapier trigger 'New Invoice' not firing",
+    "description": "Hi, I have a Zap set up to post to our accounting software whenever a 'New Invoice' is generated in Meridian. It has been working fine for months, but yesterday we had 4 new invoices generated and none of them triggered the Zap. I checked Zapier and there are no errors, it just says no data was received. Can you check if the Zapier hook is broken on your end?"
+  },
+  {
+    "ticket_id": "TKT-105",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Elena Vance",
+      "email": "elena.vance@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-13T11:17:00+00:00",
+    "summary": "Locked out of admin account / Okta SSO failing",
+    "description": "Help! I'm the primary admin for our Meridian workspace and our Okta SSO integration is failing. Everyone is getting a \"SAML response signature verification failed\" error when trying to log in. I need to get in to check the cert configuration but I can't bypass SSO. Can you temporarily disable SSO for my email (elena.vance@vanguardtech.com) so I can log in with a password and fix this? We have 120 users unable to work right now."
+  },
+  {
+    "ticket_id": "TKT-106",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Toby Hargreaves",
+      "email": "toby.hargreaves@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-19T04:24:00+00:00",
+    "summary": "Slack integration not sending alerts to private channels",
+    "description": "Hey. We set up the Slack integration to ping us when a new subscription is created. It works fine for public channels, but we can't seem to add it to our private #sales-alerts channel. The channel doesn't even show up in the dropdown menu in Meridian. Any ideas?"
+  },
+  {
+    "ticket_id": "TKT-107",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Raymond Vance",
+      "email": "raymond.vance@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-02T23:41:00+00:00",
+    "summary": "PDF EXPORTS LOOK LIKE TRASH. CANCELING SUBSCRIPTION.",
+    "description": "Your PDF export feature is completely broken and useless to us now. The horizontal divider line under the header is light grey. LIGHT GREY. It used to be dark charcoal. This makes our weekly executive reports look incredibly cheap and washed out when printed. I have a board meeting in two hours and I cannot present these amateur-looking documents to our investors! This is a complete betrayal of your service agreement. I want that line changed back to solid black/charcoal IMMEDIATELY. If this is not resolved before my meeting, I am canceling our contract, demanding a full refund for the last quarter, and migrating our billing data off your servers today. Absolutely pathetic update."
+  },
+  {
+    "ticket_id": "TKT-108",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-05-17T05:22:00+00:00",
+    "summary": "CRITICAL: SAML SSO login broken for all users",
+    "description": "Our team cannot log in to Meridian. Anyone trying to log in via our Okta SSO is getting an \"Invalid SAML Assertion\" error page. We haven't changed anything on our Okta config.\n\nThis is blocking our entire customer success team right now. Please help urgently!"
+  },
+  {
+    "ticket_id": "TKT-109",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "David Liang",
+      "email": "david.liang@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-13T09:32:00+00:00",
+    "summary": "Update billing email address for invoices",
+    "description": "Hello,\n\nCould you please update the billing contact on our account? Currently, monthly invoices are going to our CTO, but they need to be sent directly to our accounting department at ap@stratusmedia.com instead. \n\nLet me know if you can change this on your end or if I need to do it somewhere in the billing portal myself."
+  },
+  {
+    "ticket_id": "TKT-110",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Emily Vance",
+      "email": "emily.vance@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-07T08:10:00+00:00",
+    "summary": "Account suspended unexpectedly",
+    "description": "Help! I just logged in and got a message saying our account has been suspended due to non-payment. We updated our credit card last week, so I don't understand why this happened. Our production API integrations are down because of this. Can someone please check this immediately and re-activate us?"
+  },
+  {
+    "ticket_id": "TKT-111",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Dave K.",
+      "email": "dave.k@kestrel-labs.dev"
+    },
+    "channel": "chat",
+    "created_at": "2026-04-01T00:50:00+00:00",
+    "summary": "CSV export won't generate as an Excel .xlsx sheet",
+    "description": "Hey, your report export is broken. I click 'Export to CSV' and it literally just downloads a comma-separated text file instead of an actual Excel spreadsheet (.xlsx format). Now my accounting team has to manually import it and re-format all the columns every single week. This is incredibly frustrating. Can you fix the CSV export button so it actually outputs an Excel file like it's supposed to?"
+  },
+  {
+    "ticket_id": "TKT-112",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-06-05T07:18:00+00:00",
+    "summary": "Double charged for this month's subscription",
+    "description": "Hi support team,\n\nI just checked our corporate card statement and it looks like we were billed twice for our Meridian subscription on October 1st. There are two identical charges of $450.00.\n\nCould you please look into this and refund the duplicate charge as soon as possible? I've attached the receipts just in case.\n\nThanks,\nSarah"
+  },
+  {
+    "ticket_id": "TKT-113",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-30T21:08:00+00:00",
+    "summary": "Feature request: Dark mode",
+    "description": "Hey guys, love the platform, it makes our billing so much easier. Just a quick feature request: any plans to add a dark mode to the web dashboard? Working in the UI late at night is a bit blinding. Thanks!"
+  },
+  {
+    "ticket_id": "TKT-114",
+    "account_id": "ACC-6",
+    "account_tier": "free",
+    "reporter": {
+      "name": "David Kim",
+      "email": "david.kim@sunnysidetutoring.org"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-11T02:41:00+00:00",
+    "summary": "Webhook delivery failures (endpoint returning 502)",
+    "description": "Hi, we are seeing a spike in webhook delivery failures on your end for the `user.created` event. Our endpoint is up and responding to test requests, but your dashboard shows 'Failed - 502 Bad Gateway' for almost all payloads sent in the last 3 hours. Are there any known issues with your webhook delivery queue right now?"
+  },
+  {
+    "ticket_id": "TKT-115",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sophie Al-Jamil",
+      "email": "sophie.aljamil@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-16T19:59:00+00:00",
+    "summary": "PDF export formatting is cut off",
+    "description": "When I export the monthly performance report to PDF, the rightmost columns (Churn Rate and LTV) are completely cut off the page. It seems like the PDF doesn't scale to fit the page width. Can this be fixed, or is there a landscape mode option?"
+  },
+  {
+    "ticket_id": "TKT-116",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Chloe Zhang",
+      "email": "chloe.zhang@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-12T04:06:00+00:00",
+    "summary": "Zapier action 'Create Customer' missing field",
+    "description": "Hi! I'm trying to set up a Zap to create a customer in Meridian when they fill out a Typeform. But in Zapier, the Meridian 'Create Customer' action doesn't have a field for 'Tax ID'. We need this for invoicing. Is there a way to pass custom metadata through Zapier?"
+  },
+  {
+    "ticket_id": "TKT-117",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Brenda Snyder",
+      "email": "brenda.snyder@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-14T10:04:00+00:00",
+    "summary": "YOUR NEW UI IS AN ABSOLUTE DISASTER. MY WHOLE TEAM IS CRIPPLED.",
+    "description": "Who approved this garbage update?! The 'Export CSV' button on the reports dashboard is completely misaligned! It is shifted like three pixels to the left of the 'Filter' button and it looks like a cheap, half-baked amateur website from 1998. It is literally driving my entire operations team INSANE and destroying our productivity. I cannot look at this eyesore for another second. It is incredibly sloppy! If this is the kind of dogshit QA process you guys run over there, we are DONE. Fix the alignment right now or we are taking our business to a platform that actually hires real designers who know how to code. I want a response from your product head IMMEDIATELY!!!!"
+  },
+  {
+    "ticket_id": "TKT-118",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@fjordanalytics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-17T01:16:00+00:00",
+    "summary": "Minor UI glitch showing other accounts",
+    "description": "Hi there, hope your week is going well. Just wanted to report a small anomaly on our team settings page. When I went to update our SSO configuration this morning, I noticed I could see and edit the SAML settings for a company called 'Apex Global Solutions' instead of ours. I can also see their user list and email addresses. It\u2019s not causing us any immediate trouble, but I figured your team might want to tidy that up when you have a moment. Thanks!"
+  },
+  {
+    "ticket_id": "TKT-119",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Thomas Fletcher",
+      "email": "thomas.fletcher@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-21T16:51:00+00:00",
+    "summary": "Payment failed notification but card is valid",
+    "description": "I just received an automated email saying our subscription payment failed and that our account access will be suspended in 3 days. This is a corporate credit card that is 100% valid and has plenty of limit, and we use it for dozens of other SaaS services without issue. Can you tell me why the transaction was declined? I tried re-entering the card details in the billing tab but it just gives a generic 'Your card was declined' message. I need to resolve this ASAP so we don't experience downtime."
+  },
+  {
+    "ticket_id": "TKT-120",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-07-11T20:11:00+00:00",
+    "summary": "CSV Export of User Report is missing \"Last Login\" column",
+    "description": "Hi, I'm trying to run a security audit of our active users. On the 'Users' page in the dashboard, I can clearly see a column for 'Last Login' date. However, when I click the 'Export CSV' button, the resulting file has columns for Name, Email, Role, and Created Date, but the 'Last Login' column is completely missing. Is there a different export tool I should be using to get this data, or is this a bug?"
+  },
+  {
+    "ticket_id": "TKT-121",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Marcus Vance",
+      "email": "marcus.vance@beaconhealth.io"
+    },
+    "channel": "chat",
+    "created_at": "2026-06-19T01:27:00+00:00",
+    "summary": "help",
+    "description": "it won't load"
+  },
+  {
+    "ticket_id": "TKT-122",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Mateo Rodriguez",
+      "email": "mateo.rodriguez@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-01T16:02:00+00:00",
+    "summary": "Feedback on new navigation layout",
+    "description": "Just wanted to send a quick note about the new dashboard UI update. While I like the modern look, hiding the \"API Keys\" section under \"Workspace Settings -> Advanced -> Developer\" takes way too many clicks now. It used to be right on the sidebar. Just some food for thought for the product team!"
+  },
+  {
+    "ticket_id": "TKT-123",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Jessica Hansen",
+      "email": "jessica.hansen@kestrel-labs.dev"
+    },
+    "channel": "portal",
+    "created_at": "2026-05-14T19:09:00+00:00",
+    "summary": "SCIM provisioning not updating user emails",
+    "description": "Hi. We use Azure AD for SCIM provisioning. When we update a user's email address in Azure AD, it doesn't seem to sync over to Meridian. The user's name updates fine, but the email remains the old one, which is causing login issues because they can't SSO with their new email. Is this a known limitation of your SCIM implementation?"
+  },
+  {
+    "ticket_id": "TKT-124",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Arthur Pendelton",
+      "email": "arthur.pendelton@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-05-05T06:22:00+00:00",
+    "summary": "Accidentally added 15 seat licenses - need refund",
+    "description": "Hi, I made a mistake this morning while setting up our directory sync and accidentally invited 15 system service accounts to our Meridian team. This triggered an immediate prorated charge of $450 to our card on file. \n\nI have already deleted the accidental accounts. Could you please reverse this charge and issue a refund? It was an honest mistake during setup."
+  },
+  {
+    "ticket_id": "TKT-125",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-04-06T09:21:00+00:00",
+    "summary": "How do I change an Admin to Owner?",
+    "description": "Hello. Our current account Owner is leaving the company next week. I am currently listed as an Admin. We need to transfer the primary ownership of our Meridian account to me before she departs. I've looked around the User Management settings but I don't see an option to change the Owner role. Can you guide me on how to do this?"
+  },
+  {
+    "ticket_id": "TKT-126",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Rachel Green",
+      "email": "rachel.green@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-03-19T07:33:00+00:00",
+    "summary": "PDF invoice export is corrupt/won't open",
+    "description": "Hi, whenever I try to download our September invoice as a PDF, the downloaded file is only 0 bytes and Acrobat says it's damaged or corrupt. Downloading the CSV works fine, but our accounting department specifically requires the PDF format for compliance. Could you email me a copy of the PDF invoice for September, or fix the download link? Our account name is \"Greenfield Logistics\"."
+  },
+  {
+    "ticket_id": "TKT-127",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Tom Higgins",
+      "email": "tom.higgins@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-02T09:03:00+00:00",
+    "summary": "Slack notifications not sending for new signups",
+    "description": "Hey. Our Slack integration stopped sending notifications to #new-signups yesterday afternoon. I tried disconnecting and reconnecting the Slack app in the Meridian settings, but it still isn't posting anything when a user signs up. Is there an outage with the integration?"
+  },
+  {
+    "ticket_id": "TKT-128",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@northwind-logistics.com"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-23T08:32:00+00:00",
+    "summary": "Update billing email address for invoices",
+    "description": "Hello, could you please update our billing email address on file? Currently, invoices are being sent to my personal work email, but they need to go to our accounting alias: ap@cloudventures.io. Thank you!"
+  },
+  {
+    "ticket_id": "TKT-129",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Guillaume Dubois",
+      "email": "guillaume.dubois@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-10T03:43:00+00:00",
+    "summary": "Certificate renewal for SAML SSO",
+    "description": "Our identity provider certificate is expiring next week. I need to update the public key certificate for our Meridian SAML configuration. Can you point me to where I can upload the new metadata XML file in the admin console? I want to make sure we don't experience any downtime."
+  },
+  {
+    "ticket_id": "TKT-130",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Liam O'Connor",
+      "email": "liam.oconnor@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-06T08:20:00+00:00",
+    "summary": "Downgrading to starter plan",
+    "description": "Hi, I need to downgrade our subscription to the Starter plan. The dashboard doesn't seem to let me do it directly\u2014it only shows options to upgrade or contact sales. We are downsizing our team and don't need the advanced SSO features anymore. Thanks."
+  },
+  {
+    "ticket_id": "TKT-131",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Fiona Gallagher",
+      "email": "fiona.gallagher@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-16T21:15:00+00:00",
+    "summary": "Feature request: Custom dashboard layouts",
+    "description": "Hello Meridian Team,\n\nOur team absolutely loves the reporting dashboard! However, we'd really like to be able to customize the layout. Right now, the CSV export button and the active users chart are at the very bottom, and we have to scroll down every day to see them. It would be amazing if we could drag and drop the widgets to prioritize what we see first.\n\nIs this something on your roadmap?\n\nBest,\nFiona"
+  },
+  {
+    "ticket_id": "TKT-132",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-06-07T13:40:00+00:00",
+    "summary": "CSV export failing on large transaction history",
+    "description": "I'm trying to export our transaction history for the last fiscal year to CSV. Every time I click export, the spinner spins for about 2 minutes and then I get a '504 Gateway Timeout' error. I really need this data for our quarterly audit by tomorrow. Can you run this export for me or help me get the file? Our account ID is 44091."
+  },
+  {
+    "ticket_id": "TKT-133",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Arthur Pendelton",
+      "email": "arthur.pendelton@kestrel-labs.dev"
+    },
+    "channel": "email",
+    "created_at": "2026-07-01T19:51:00+00:00",
+    "summary": "Change account owner",
+    "description": "Hello,\n\nThe current owner of our Meridian account, Jessica Miller, has left the company. I need to transfer the Account Owner role to myself (arthur.pendelton@acme.corp). I am currently configured as an Admin in the system.\n\nHow do we go about getting this updated? Let me know what documentation you need from me.\n\nThanks,\nArthur"
+  },
+  {
+    "ticket_id": "TKT-134",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Brad G.",
+      "email": "brad.g@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-04-14T19:15:00+00:00",
+    "summary": "export",
+    "description": "blank screen"
+  },
+  {
+    "ticket_id": "TKT-135",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Elena Rostova",
+      "email": "elena.rostova@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-19T10:39:00+00:00",
+    "summary": "API responding with 500 errors",
+    "description": "Hi Meridian support, hope you're having a good Thursday. Our monitoring tools started alerting us that our integration with your REST API is failing. It seems like every GET and POST request we send to `/v1/users` and `/v1/subscriptions` is returning a 500 error. It\u2019s been doing this for about three hours now, which means our automated onboarding is paused. If you happen to be doing some scheduled maintenance, just let us know when it's expected to wrap up. Best, Elena."
+  },
+  {
+    "ticket_id": "TKT-136",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Alan Turing",
+      "email": "alan.turing@fjordanalytics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-19T22:47:00+00:00",
+    "summary": "Broken link on API docs page",
+    "description": "Hey, just wanted to let you know that the link to the 'Webhooks Signing Secret' guide on this page (https://docs.meridian.com/api-reference/webhooks) returns a 404 error. Had to search around to find the right page."
+  },
+  {
+    "ticket_id": "TKT-137",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Samir Al-Jamil",
+      "email": "samir.aljamil@tumbleweedcoffee.co"
+    },
+    "channel": "chat",
+    "created_at": "2026-05-23T05:16:00+00:00",
+    "summary": "API Rate Limits query",
+    "description": "Hey folks, we're planning a migration and will be making a large volume of API requests to the `/v1/customers` endpoint over the weekend. What is the rate limit per minute on the Growth plan? I couldn't find the exact threshold in your developer docs."
+  },
+  {
+    "ticket_id": "TKT-138",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Jordan Brooks",
+      "email": "jordan.brooks@northwind-logistics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-03-21T05:36:00+00:00",
+    "summary": "Slack notifications not posting to private channels",
+    "description": "Hi. I successfully connected our Meridian account to Slack, and it works perfectly for sending billing notifications to our public #billing channel. However, when I try to configure it to post security events to our private #security-ops channel, the channel doesn't show up in the dropdown menu. Does the integration not support private Slack channels, or do I need to invite a specific Meridian bot to the channel first?"
+  },
+  {
+    "ticket_id": "TKT-139",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "James Peterson",
+      "email": "james.peterson@beaconhealth.io"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-13T12:41:00+00:00",
+    "summary": "Dashboard charts not loading",
+    "description": "The main dashboard is just showing spinning wheels for the 'Monthly Recurring Revenue' and 'Churndown' charts. I've cleared my cache and cookies and tried logging back in, but nothing changes. It's just spinning. Is your system down?"
+  },
+  {
+    "ticket_id": "TKT-140",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Hiroshi Tanaka",
+      "email": "hiroshi.tanaka@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-03-24T10:26:00+00:00",
+    "summary": "Rate limit questions for /v1/customers endpoint",
+    "description": "Hello, we are planning a major migration and will need to update about 50,000 customer records via the REST API. What is the rate limit on the PUT /v1/customers endpoint for the Growth tier? Also, does Meridian support batch/bulk update requests, or do we have to send them sequentially?"
+  },
+  {
+    "ticket_id": "TKT-141",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "David Kim",
+      "email": "david.kim@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-05-03T04:03:00+00:00",
+    "summary": "Webhook delivery failing with 410 errors",
+    "description": "We are seeing a sudden spike in failed webhook deliveries from Meridian to our endpoint (https://api.cloudscale.io/v1/meridian-receiver). Your system is reporting a 410 Gone error, but our servers are active and we haven't changed our endpoints. Are you sending a different payload structure or header that might be causing our gateway to reject them?"
+  },
+  {
+    "ticket_id": "TKT-142",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Chloe Dupont",
+      "email": "chloe.dupont@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-06-13T15:33:00+00:00",
+    "summary": "API rate limit question",
+    "description": "Hello, we are planning a large data migration next weekend and will need to update about 50,000 user records in Meridian via your REST API. Could you let us know what the rate limit is for the PATCH /v1/users endpoint? Also, is there a bulk update endpoint we can use instead of making individual HTTP requests? I couldn't find a bulk option in your documentation. Thanks for your help."
+  },
+  {
+    "ticket_id": "TKT-143",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Brenda Coleman",
+      "email": "brenda.coleman@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-05-23T13:18:00+00:00",
+    "summary": "Salesforce integration is NOT pushing updates to Slack channels",
+    "description": "We connected both Salesforce and Slack to Meridian specifically so our sales team could get real-time contract alerts in our #sales-alerts channel. I've been troubleshooting this for three hours and nothing is sending. Your integration is completely broken. Why is there no option in the Salesforce settings to route the alert payload directly to a Slack channel? We pay for the Premium tier and this is a basic workflow. Please fix this bug today."
+  },
+  {
+    "ticket_id": "TKT-144",
+    "account_id": "ACC-4",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Aisha Al-Jamil",
+      "email": "aisha.aljamil@tumbleweedcoffee.co"
+    },
+    "channel": "email",
+    "created_at": "2026-05-21T00:50:00+00:00",
+    "summary": "Resend invitation link for new employee",
+    "description": "Hello! I invited a new employee (t.jones@ourcompany.com) to our Meridian portal yesterday, but they didn't see the email and now they say the link has expired. Could you please resend the invitation link or tell me how I can regenerate it myself? I tried deleting the user to re-invite them but it won't let me delete a pending user. Thanks!"
+  },
+  {
+    "ticket_id": "TKT-145",
+    "account_id": "ACC-5",
+    "account_tier": "free",
+    "reporter": {
+      "name": "Priya Sharma",
+      "email": "priya.sharma@kestrel-labs.dev"
+    },
+    "channel": "portal",
+    "created_at": "2026-03-16T19:21:00+00:00",
+    "summary": "Salesforce integration not syncing custom fields",
+    "description": "We've mapped the \"Company Size\" field in Meridian to the corresponding custom field in Salesforce, but the data isn't syncing over. The standard fields like name and email are syncing fine, but custom properties are completely blank in Salesforce. I've re-authenticated the integration twice and it didn't fix it."
+  },
+  {
+    "ticket_id": "TKT-146",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "Dieter Schmidt",
+      "email": "dieter.schmidt@fjordanalytics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-03-17T11:23:00+00:00",
+    "summary": "Need VAT number added to PDF invoices",
+    "description": "Hello,\n\nWe need our company VAT number (DE314253647) printed on all of our PDF invoices for tax compliance here in Germany. I couldn't find a field in the billing settings to add this. \n\nCan you please manually add this to our account billing details, and regenerate our latest invoice (inv_983742) to include it?\n\nThank you,\nDieter"
+  },
+  {
+    "ticket_id": "TKT-147",
+    "account_id": "ACC-3",
+    "account_tier": "pro",
+    "reporter": {
+      "name": "David Kim",
+      "email": "david.kim@fjordanalytics.com"
+    },
+    "channel": "chat",
+    "created_at": "2026-07-08T21:19:00+00:00",
+    "summary": "Locked out of admin account / Okta SSO failing",
+    "description": "Help! I just tried to log in via our Okta SSO and I'm getting a 'SAML configuration mismatch' error. I am the main admin and now my whole team is locked out of Meridian. Please help us fix this ASAP, we have a big demo in an hour."
+  },
+  {
+    "ticket_id": "TKT-148",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Naomi Tanaka",
+      "email": "naomi.tanaka@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-03-23T09:49:00+00:00",
+    "summary": "Monthly Active Users chart is showing flat line",
+    "description": "Hi support team, I'm looking at our usage dashboard for the past 30 days. The 'Monthly Active Users' chart is showing a completely flat line at 0 since Tuesday, but I know for a fact we've had hundreds of active users logging in. The daily active user count seems to be updating correctly though. Is there a delay in compiling the monthly report?"
+  },
+  {
+    "ticket_id": "TKT-149",
+    "account_id": "ACC-1",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Lucia Gomez",
+      "email": "lucia.gomez@northwind-logistics.com"
+    },
+    "channel": "email",
+    "created_at": "2026-05-24T13:47:00+00:00",
+    "summary": "Accidentally upgraded plan - need refund",
+    "description": "Hi, I was looking at the pricing page to compare features and clicked 'Upgrade' on the Enterprise tier by mistake. I didn't realize it would immediately charge our credit card on file for $2,400. We are a small startup and cannot afford this right now. Can you please downgrade us back to the Growth plan and refund this charge? I'm really panicking here."
+  },
+  {
+    "ticket_id": "TKT-150",
+    "account_id": "ACC-2",
+    "account_tier": "enterprise",
+    "reporter": {
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka@beaconhealth.io"
+    },
+    "channel": "email",
+    "created_at": "2026-05-29T11:43:00+00:00",
+    "summary": "Error in API Docs for /v1/subscriptions update endpoint",
+    "description": "Hello, I think I found a small error in your API reference documentation. For the `POST /v1/subscriptions/{id}` endpoint, the example payload says that the `trial_end` parameter should be a ISO 8601 string (e.g., \"2024-12-31T23:59:59Z\"). However, when we try sending that, your API returns a 400 Bad Request stating that `trial_end` must be a Unix timestamp (integer). When we switched to a Unix timestamp, it worked. Could you please update the documentation to prevent others from getting confused? Thank you!"
+  }
+]
